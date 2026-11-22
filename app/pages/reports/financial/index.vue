@@ -122,9 +122,6 @@ const printReport = () => {
       <div class="flex items-start justify-between pb-4 border-b-2 border-slate-800">
         <div>
           <div class="flex items-center gap-2">
-            <div class="w-8 h-8 bg-blue-700 rounded flex items-center justify-center font-black text-white text-xs">
-              AQ
-            </div>
             <div>
               <h2 class="text-base font-bold text-slate-900 uppercase tracking-tight leading-none">
                 PT DWI SAPTA UTAMA

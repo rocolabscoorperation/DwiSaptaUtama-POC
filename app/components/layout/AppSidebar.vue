@@ -123,9 +123,6 @@ const isActiveChild = (to: string): boolean => {
       <!-- Mobile Close Header -->
       <div class="h-13 px-4 flex items-center justify-between border-b border-slate-800 lg:hidden bg-[#0b2447]">
         <div class="flex items-center gap-2">
-          <div class="w-6 h-6 bg-blue-600 rounded flex items-center justify-center font-bold text-white text-xs">
-            AQ
-          </div>
           <span class="font-bold text-sm text-white">Menu Navigasi ERP</span>
         </div>
         <button

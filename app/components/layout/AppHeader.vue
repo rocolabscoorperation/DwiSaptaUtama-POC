@@ -28,9 +28,6 @@ const emit = defineEmits<{
         </button>
 
         <div class="flex items-center gap-2">
-          <div class="w-7 h-7 bg-blue-600 rounded flex items-center justify-center font-black text-white text-xs tracking-wider shadow-xs">
-            AQ
-          </div>
           <div>
             <div class="text-sm font-bold tracking-tight text-white leading-none">
               DWI SAPTA UTAMA
@@ -69,9 +66,6 @@ const emit = defineEmits<{
     <!-- Secondary bar for Breadcrumbs on desktop/tablet -->
     <div class="hidden sm:flex bg-slate-100 border-t border-slate-200 px-4 py-1.5 items-center justify-between">
       <AppBreadcrumb />
-      <div class="text-xs text-slate-500 font-mono">
-        Status Sistem: <span class="text-emerald-700 font-semibold">● Online (PoC)</span>
-      </div>
     </div>
   </header>
 </template>

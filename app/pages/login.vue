@@ -41,9 +41,6 @@ const selectDemoUser = (userEmail: string) => {
     <div class="bg-[#0b2447] text-white p-8 md:w-5/12 flex flex-col justify-between border-b md:border-b-0 md:border-r border-slate-800">
       <div>
         <div class="flex items-center gap-2.5 mb-6">
-          <div class="w-9 h-9 bg-blue-600 rounded flex items-center justify-center font-black text-white text-base shadow-xs">
-            AQ
-          </div>
           <div>
             <div class="text-sm font-bold tracking-tight text-white leading-none">
               PT DWI SAPTA UTAMA
