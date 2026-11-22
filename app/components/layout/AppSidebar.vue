@@ -114,7 +114,7 @@ const isActiveChild = (to: string): boolean => {
 
     <!-- Sidebar Container -->
     <aside
-      class="fixed lg:static top-0 bottom-0 left-0 z-50 bg-[#0f2744] text-slate-200 border-r border-slate-800 transition-all duration-200 flex flex-col shrink-0 overflow-hidden shadow-lg lg:shadow-none"
+      class="fixed lg:static top-0 bottom-0 left-0 z-50 h-screen lg:h-full bg-[#0f2744] text-slate-200 border-r border-slate-800 transition-all duration-200 flex flex-col shrink-0 overflow-hidden shadow-lg lg:shadow-none"
       :class="[
         mobileOpen ? 'translate-x-0 w-64' : '-translate-x-full lg:translate-x-0',
         collapsed ? 'lg:w-16' : 'lg:w-64'

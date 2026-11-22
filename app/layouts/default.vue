@@ -28,7 +28,7 @@ const closeMobile = () => {
     />
 
     <!-- Main Body Area -->
-    <div class="flex-1 flex overflow-hidden">
+    <div class="flex-1 min-h-0 flex overflow-hidden">
       <!-- Sidebar Navigation -->
       <AppSidebar
         :collapsed="sidebarCollapsed"
