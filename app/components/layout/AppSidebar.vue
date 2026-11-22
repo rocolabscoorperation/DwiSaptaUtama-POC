@@ -222,7 +222,7 @@ const isActiveChild = (to: string): boolean => {
       <div v-if="!collapsed" class="p-3 border-t border-slate-800 text-xs text-slate-400 bg-[#0a1e36]">
         <div class="font-bold text-slate-300 uppercase tracking-wider mb-0.5">PT DWI SAPTA UTAMA</div>
         <div class="text-xs text-slate-400">Distributor Resmi Aqua Bali</div>
-        <div class="text-[11px] text-slate-400 mt-1">v1.0-poc (Nuxt 4 + Fiori UI)</div>
+        <div class="text-[11px] text-slate-400 mt-1">v1.0-poc</div>
       </div>
     </aside>
   </div>
