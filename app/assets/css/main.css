@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+:root {
+  --sap-font: "72", "72full", -apple-system, "Segoe UI", Arial, sans-serif;
+}
+
+@layer base {
+  html {
+    font-family: "72", "72full", -apple-system, "Segoe UI", Arial, sans-serif;
+    font-size: 15px; /* Comfortable base scale so text-sm is ~13.5px and text-base is 15px */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #1e293b;
+    background-color: #f5f7fa;
+    line-height: 1.5;
+  }
+
+  body {
+    font-family: "72", "72full", -apple-system, "Segoe UI", Arial, sans-serif;
+    font-size: 0.9375rem; /* ~14px enterprise standard */
+    overflow-x: hidden;
+  }
+
+  /* Ensure enterprise tables have comfortable, clear typography */
+  table {
+    font-size: 0.875rem; /* 14px */
+  }
+
+  table th {
+    font-size: 0.8125rem; /* ~13px */
+    letter-spacing: 0.025em;
+  }
+
+  table td {
+    font-size: 0.875rem; /* 14px */
+    font-feature-settings: "tnum";
+  }
+
+  /* Form inputs, select dropdowns & textareas legible standard */
+  input, select, textarea {
+    font-family: inherit;
+    font-size: 0.875rem; /* 14px */
+  }
+}
+
+/* Guard against microscopic text sizes */
+.text-\[9px\], .text-\[10px\] {
+  font-size: 0.75rem !important; /* Minimum 12px for clear readability */
+}
+
+.text-\[11px\] {
+  font-size: 0.775rem !important; /* ~12.5px */
+}
+
+/* Custom compact scrollbar for enterprise tables */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Table tabular numbers */
+table td {
+  font-feature-settings: "tnum";
+}
+
+/* Print / PDF Export Styles */
+@media print {
+  header,
+  aside,
+  button,
+  .no-print {
+    display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-size: 12pt !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .print-card {
+    border: none !important;
+    box-shadow: none !important;
+  }
+}
