@@ -157,7 +157,7 @@ const confirmDeletePO = () => {
       <template #actions>
         <button
           type="button"
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#0f3b6c] hover:bg-blue-800 text-white rounded text-xs font-semibold shadow-xs transition-colors"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#0A6ED1] hover:bg-[#0854A0] text-white rounded text-xs font-semibold shadow-xs transition-colors"
           @click="openAddPOModal"
         >
           <Plus class="w-3.5 h-3.5" />
@@ -172,10 +172,10 @@ const confirmDeletePO = () => {
     >
       <template #filters>
         <div class="flex items-center gap-1.5 text-xs">
-          <span class="text-slate-500 font-medium">Status:</span>
+          <span class="text-[#425B73] font-medium">Status:</span>
           <select
             v-model="selectedStatus"
-            class="px-2 py-1 text-xs bg-slate-50 border border-slate-300 rounded focus:bg-white focus:outline-hidden"
+            class="px-2 py-1 text-xs bg-[#F5F7FA] border border-[#D9E2EC] rounded focus:bg-white focus:outline-hidden"
           >
             <option v-for="st in statuses" :key="st" :value="st">
               {{ st === 'ALL' ? 'Semua Status' : st }}
@@ -185,10 +185,10 @@ const confirmDeletePO = () => {
       </template>
     </SearchFilterBar>
 
-    <div class="bg-white border border-slate-200 rounded shadow-xs overflow-hidden">
+    <div class="bg-white border border-[#EAF0F5] rounded shadow-xs overflow-hidden">
       <div class="overflow-x-auto">
         <table class="w-full text-xs text-left">
-          <thead class="bg-slate-100 text-slate-600 font-semibold border-b border-slate-200 uppercase text-[10px] tracking-wider">
+          <thead class="bg-slate-100 text-slate-600 font-semibold border-b border-[#EAF0F5] uppercase text-[10px] tracking-wider">
             <tr>
               <th class="py-2.5 px-3">No. PO</th>
               <th class="py-2.5 px-3">Pemasok / Pabrik</th>
@@ -204,7 +204,7 @@ const confirmDeletePO = () => {
             <tr
               v-for="po in filteredOrders"
               :key="po.id"
-              class="hover:bg-slate-50 transition-colors"
+              class="hover:bg-[#F5F7FA] transition-colors"
             >
               <td class="py-2.5 px-3 font-mono font-semibold text-blue-900">
                 {{ po.poNumber }}
@@ -221,7 +221,7 @@ const confirmDeletePO = () => {
               <td class="py-2.5 px-3 text-slate-600">
                 {{ formatDate(po.expectedDate) }}
               </td>
-              <td class="py-2.5 px-3 text-right font-mono font-bold text-slate-900">
+              <td class="py-2.5 px-3 text-right font-mono font-bold text-[#1D2024]">
                 {{ formatRupiah(po.totalAmount) }}
               </td>
               <td class="py-2.5 px-3 text-center">
@@ -239,7 +239,7 @@ const confirmDeletePO = () => {
                   </button>
                   <button
                     type="button"
-                    class="p-1 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded transition-colors"
+                    class="p-1 text-[#647B91] hover:text-[#AA0808] hover:bg-[#FFF0EF] rounded transition-colors"
                     title="Batalkan / Hapus PO"
                     @click="promptDeletePO(po)"
                   >
@@ -263,7 +263,7 @@ const confirmDeletePO = () => {
       v-if="selectedPO"
       class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4"
     >
-      <div class="bg-white rounded border border-slate-200 shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden animate-in fade-in zoom-in-95">
+      <div class="bg-white rounded border border-[#EAF0F5] shadow-lg max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden animate-in fade-in zoom-in-95">
         <div class="px-4 py-3 bg-[#0b2447] text-white flex items-center justify-between">
           <div class="flex items-center gap-2">
             <FileText class="w-4 h-4 text-blue-400" />
@@ -275,29 +275,29 @@ const confirmDeletePO = () => {
         </div>
 
         <div class="p-4 overflow-y-auto space-y-4 text-xs">
-          <div class="grid grid-cols-2 gap-3 p-3 bg-slate-50 rounded border border-slate-200">
+          <div class="grid grid-cols-2 gap-3 p-3 bg-[#F5F7FA] rounded border border-[#EAF0F5]">
             <div>
-              <span class="text-slate-500 block">Pemasok:</span>
+              <span class="text-[#425B73] block">Pemasok:</span>
               <span class="font-semibold text-slate-800">{{ selectedPO.supplierName }}</span>
             </div>
             <div>
-              <span class="text-slate-500 block">Depot Penerima:</span>
+              <span class="text-[#425B73] block">Depot Penerima:</span>
               <span class="font-semibold text-slate-800">{{ selectedPO.depotName }}</span>
             </div>
             <div>
-              <span class="text-slate-500 block">Tanggal Order:</span>
+              <span class="text-[#425B73] block">Tanggal Order:</span>
               <span class="font-mono text-slate-800">{{ formatDate(selectedPO.orderDate) }}</span>
             </div>
             <div>
-              <span class="text-slate-500 block">Status:</span>
+              <span class="text-[#425B73] block">Status:</span>
               <StatusBadge :status="selectedPO.status" size="sm" />
             </div>
           </div>
 
           <div>
             <h4 class="font-bold text-slate-800 mb-2 uppercase text-[11px] tracking-wider">Daftar Barang Dipesan</h4>
-            <table class="w-full border border-slate-200 rounded text-left">
-              <thead class="bg-slate-100 text-slate-600 font-semibold border-b border-slate-200">
+            <table class="w-full border border-[#EAF0F5] rounded text-left">
+              <thead class="bg-slate-100 text-slate-600 font-semibold border-b border-[#EAF0F5]">
                 <tr>
                   <th class="py-2 px-3">Produk</th>
                   <th class="py-2 px-3 text-right">Qty Pesan</th>
@@ -310,7 +310,7 @@ const confirmDeletePO = () => {
                 <tr v-for="item in selectedPO.items" :key="item.productId">
                   <td class="py-2 px-3">
                     <div class="font-semibold text-slate-800">{{ item.productName }}</div>
-                    <div class="text-[10px] font-mono text-slate-500">{{ item.sku }}</div>
+                    <div class="text-[10px] font-mono text-[#425B73]">{{ item.sku }}</div>
                   </td>
                   <td class="py-2 px-3 text-right font-mono font-medium">
                     {{ formatNumber(item.qtyOrdered) }} {{ item.unit }}
@@ -321,12 +321,12 @@ const confirmDeletePO = () => {
                   <td class="py-2 px-3 text-right font-mono">
                     {{ formatRupiah(item.unitPrice) }}
                   </td>
-                  <td class="py-2 px-3 text-right font-mono font-bold text-slate-900">
+                  <td class="py-2 px-3 text-right font-mono font-bold text-[#1D2024]">
                     {{ formatRupiah(item.subtotal) }}
                   </td>
                 </tr>
               </tbody>
-              <tfoot class="bg-slate-50 border-t border-slate-200 font-bold">
+              <tfoot class="bg-[#F5F7FA] border-t border-[#EAF0F5] font-bold">
                 <tr>
                   <td colspan="4" class="py-2 px-3 text-right uppercase text-[10px] tracking-wider">
                     Total Pesanan (IDR):
@@ -345,7 +345,7 @@ const confirmDeletePO = () => {
           </div>
         </div>
 
-        <div class="px-4 py-2.5 bg-slate-100 border-t border-slate-200 flex justify-end">
+        <div class="px-4 py-2.5 bg-slate-100 border-t border-[#EAF0F5] flex justify-end">
           <button
             type="button"
             class="px-3 py-1.5 bg-slate-700 hover:bg-slate-800 text-white rounded text-xs font-semibold"
@@ -362,7 +362,7 @@ const confirmDeletePO = () => {
       v-if="isAddModalOpen"
       class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4 animate-in fade-in"
     >
-      <div class="bg-white rounded border border-slate-200 shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden">
+      <div class="bg-white rounded border border-[#EAF0F5] shadow-lg max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden">
         <div class="px-4 py-3 bg-[#0b2447] text-white flex items-center justify-between">
           <div class="flex items-center gap-2">
             <ShoppingBag class="w-4 h-4 text-blue-400" />
@@ -376,11 +376,11 @@ const confirmDeletePO = () => {
         <form class="p-4 overflow-y-auto space-y-3.5 text-xs" @submit.prevent="savePO">
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Pilih Pemasok / Produsen</label>
+              <label class="block font-semibold text-[#1D2024] mb-1">Pilih Pemasok / Produsen</label>
               <select
                 v-model="poForm.supplierId"
                 required
-                class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-300 rounded focus:bg-white focus:outline-hidden"
+                class="w-full px-2.5 py-1.5 bg-[#F5F7FA] border border-[#D9E2EC] rounded focus:bg-white focus:outline-hidden"
               >
                 <option v-for="s in erpStore.suppliers" :key="s.id" :value="s.id">
                   {{ s.name }} ({{ s.supplierCode }})
@@ -388,11 +388,11 @@ const confirmDeletePO = () => {
               </select>
             </div>
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Depot Tujuan Penerimaan</label>
+              <label class="block font-semibold text-[#1D2024] mb-1">Depot Tujuan Penerimaan</label>
               <select
                 v-model="poForm.depotId"
                 required
-                class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-300 rounded focus:bg-white focus:outline-hidden"
+                class="w-full px-2.5 py-1.5 bg-[#F5F7FA] border border-[#D9E2EC] rounded focus:bg-white focus:outline-hidden"
               >
                 <option value="DEP-001">Depot Denpasar (DPS-01)</option>
                 <option value="DEP-002">Depot Jimbaran (JBR-01)</option>
@@ -402,29 +402,29 @@ const confirmDeletePO = () => {
 
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Tanggal Pemesanan</label>
+              <label class="block font-semibold text-[#1D2024] mb-1">Tanggal Pemesanan</label>
               <input
                 v-model="poForm.orderDate"
                 type="date"
                 required
-                class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-300 rounded font-mono focus:bg-white focus:outline-hidden"
+                class="w-full px-2.5 py-1.5 bg-[#F5F7FA] border border-[#D9E2EC] rounded font-mono focus:bg-white focus:outline-hidden"
               />
             </div>
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Estimasi Tiba di Gudang</label>
+              <label class="block font-semibold text-[#1D2024] mb-1">Estimasi Tiba di Gudang</label>
               <input
                 v-model="poForm.expectedDate"
                 type="date"
                 required
-                class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-300 rounded font-mono focus:bg-white focus:outline-hidden"
+                class="w-full px-2.5 py-1.5 bg-[#F5F7FA] border border-[#D9E2EC] rounded font-mono focus:bg-white focus:outline-hidden"
               />
             </div>
           </div>
 
           <!-- Items Row -->
-          <div class="border border-slate-200 rounded p-3 bg-slate-50/50">
+          <div class="border border-[#EAF0F5] rounded p-3 bg-[#F5F7FA]/50">
             <div class="flex items-center justify-between mb-2">
-              <span class="font-bold uppercase tracking-wider text-[11px] text-slate-700">Daftar Produk yang Dipesan</span>
+              <span class="font-bold uppercase tracking-wider text-[11px] text-[#1D2024]">Daftar Produk yang Dipesan</span>
               <button
                 type="button"
                 class="text-blue-700 font-semibold text-xs hover:underline flex items-center gap-1"
@@ -438,12 +438,12 @@ const confirmDeletePO = () => {
               <div
                 v-for="(row, idx) in poForm.items"
                 :key="idx"
-                class="flex items-center gap-2 bg-white p-2 rounded border border-slate-200"
+                class="flex items-center gap-2 bg-white p-2 rounded border border-[#EAF0F5]"
               >
                 <div class="flex-1">
                   <select
                     v-model="row.productId"
-                    class="w-full px-2 py-1 bg-slate-50 border border-slate-300 rounded focus:bg-white text-xs"
+                    class="w-full px-2 py-1 bg-[#F5F7FA] border border-[#D9E2EC] rounded focus:bg-white text-xs"
                   >
                     <option v-for="p in erpStore.products" :key="p.id" :value="p.id">
                       {{ p.name }} ({{ formatRupiah(p.purchasePrice) }})
@@ -456,12 +456,12 @@ const confirmDeletePO = () => {
                     type="number"
                     min="1"
                     placeholder="Kuantitas"
-                    class="w-full px-2 py-1 bg-slate-50 border border-slate-300 rounded font-mono text-right text-xs"
+                    class="w-full px-2 py-1 bg-[#F5F7FA] border border-[#D9E2EC] rounded font-mono text-right text-xs"
                   />
                 </div>
                 <button
                   type="button"
-                  class="p-1 text-slate-400 hover:text-rose-600"
+                  class="p-1 text-[#647B91] hover:text-[#AA0808]"
                   :disabled="poForm.items.length === 1"
                   @click="removeItemRow(idx)"
                 >
@@ -470,33 +470,33 @@ const confirmDeletePO = () => {
               </div>
             </div>
 
-            <div class="mt-3 pt-2 border-t border-slate-200 flex justify-between items-center text-xs font-bold">
+            <div class="mt-3 pt-2 border-t border-[#EAF0F5] flex justify-between items-center text-xs font-bold">
               <span>Total Estimasi Biaya PO:</span>
               <span class="font-mono text-sm text-[#0f3b6c]">{{ formatRupiah(calculateTotal) }}</span>
             </div>
           </div>
 
           <div>
-            <label class="block font-semibold text-slate-700 mb-1">Catatan PO</label>
+            <label class="block font-semibold text-[#1D2024] mb-1">Catatan PO</label>
             <input
               v-model="poForm.notes"
               type="text"
-              class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-300 rounded focus:bg-white focus:outline-hidden"
+              class="w-full px-2.5 py-1.5 bg-[#F5F7FA] border border-[#D9E2EC] rounded focus:bg-white focus:outline-hidden"
               placeholder="Instruksi pengiriman batch pabrik..."
             />
           </div>
 
-          <div class="pt-3 border-t border-slate-200 flex justify-end gap-2">
+          <div class="pt-3 border-t border-[#EAF0F5] flex justify-end gap-2">
             <button
               type="button"
-              class="px-3 py-1.5 border border-slate-300 rounded text-slate-700 hover:bg-slate-50"
+              class="px-3 py-1.5 border border-[#D9E2EC] rounded text-[#1D2024] hover:bg-[#F5F7FA]"
               @click="isAddModalOpen = false"
             >
               Batal
             </button>
             <button
               type="submit"
-              class="px-3 py-1.5 bg-[#0f3b6c] hover:bg-blue-800 text-white font-semibold rounded shadow-xs flex items-center gap-1"
+              class="px-3 py-1.5 bg-[#0A6ED1] hover:bg-[#0854A0] text-white font-semibold rounded shadow-xs flex items-center gap-1"
             >
               <Check class="w-3.5 h-3.5" />
               <span>Simpan & Ajukan PO</span>

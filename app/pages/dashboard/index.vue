@@ -49,7 +49,7 @@ const trendChartOptions = computed<EChartsOption>(() => {
         let res = `<div class="font-bold text-xs pb-1 border-b mb-1">${params[0]?.axisValue}</div>`
         params.forEach((item: any) => {
           res += `<div class="text-xs flex items-center justify-between gap-4">
-            <span style="color:${item.color}">● ${item.seriesName}:</span>
+            <span style="color:${item.color}">${item.seriesName}:</span>
             <span class="font-mono font-bold">Rp ${(item.value * 1000000).toLocaleString('id-ID')}</span>
           </div>`
         })
@@ -238,14 +238,14 @@ const inventoryComparisonOptions = computed<EChartsOption>(() => {
       <template #actions>
         <NuxtLink
           to="/sales/sales-orders"
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#0f3b6c] hover:bg-blue-800 text-white rounded text-xs font-semibold shadow-xs transition-colors"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#0A6ED1] hover:bg-[#0854A0] text-white rounded text-xs font-semibold shadow-xs transition-colors"
         >
           <Truck class="w-3.5 h-3.5" />
           <span>Lihat Penjualan</span>
         </NuxtLink>
         <NuxtLink
           to="/inventory/stock-overview"
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 rounded text-xs font-semibold shadow-xs transition-colors"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-[#D9E2EC] hover:bg-[#F5F7FA] text-[#1D2024] rounded text-xs font-semibold shadow-xs transition-colors"
         >
           <Package class="w-3.5 h-3.5" />
           <span>Cek Stok</span>
@@ -303,14 +303,14 @@ const inventoryComparisonOptions = computed<EChartsOption>(() => {
     <!-- Charts Row: Trend Line & Product Distribution -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
       <!-- Sales vs Purchasing Trend (8 cols) -->
-      <div class="lg:col-span-8 bg-white border border-slate-200 rounded p-4 shadow-xs">
+      <div class="lg:col-span-8 bg-white border border-[#EAF0F5] rounded p-4 shadow-xs">
         <div class="flex items-center justify-between mb-2 pb-2 border-b border-slate-100">
           <div>
             <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
               <TrendingUp class="w-4 h-4 text-blue-700" />
               Tren Penjualan vs Pembelian (November 2026)
             </h3>
-            <p class="text-[11px] text-slate-500">
+            <p class="text-[11px] text-[#425B73]">
               Perbandingan arus belanja barang masuk dari Danone dan omzet distribusi ke pelanggan.
             </p>
           </div>
@@ -323,13 +323,13 @@ const inventoryComparisonOptions = computed<EChartsOption>(() => {
       </div>
 
       <!-- Sales by Product SKU Donut (4 cols) -->
-      <div class="lg:col-span-4 bg-white border border-slate-200 rounded p-4 shadow-xs">
+      <div class="lg:col-span-4 bg-white border border-[#EAF0F5] rounded p-4 shadow-xs">
         <div class="mb-2 pb-2 border-b border-slate-100">
           <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
             <ShoppingBag class="w-4 h-4 text-blue-700" />
             Distribusi Produk Terjual
           </h3>
-          <p class="text-[11px] text-slate-500">
+          <p class="text-[11px] text-[#425B73]">
             Pangsa omzet menurut kategori Aqua Galon vs Aqua Botol.
           </p>
         </div>
@@ -339,14 +339,14 @@ const inventoryComparisonOptions = computed<EChartsOption>(() => {
     </div>
 
     <!-- Inventory Distribution Comparison Chart (Full row) -->
-    <div class="bg-white border border-slate-200 rounded p-4 shadow-xs">
+    <div class="bg-white border border-[#EAF0F5] rounded p-4 shadow-xs">
       <div class="flex items-center justify-between mb-2 pb-2 border-b border-slate-100">
         <div>
           <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
             <Package class="w-4 h-4 text-blue-700" />
             Perbandingan Persediaan Fisik Antar Depot (Denpasar vs Jimbaran)
           </h3>
-          <p class="text-[11px] text-slate-500">
+          <p class="text-[11px] text-[#425B73]">
             Keseimbangan stok Aqua Galon 19L, varian botol, dan galon kosong untuk rotasi operasional.
           </p>
         </div>
@@ -364,8 +364,8 @@ const inventoryComparisonOptions = computed<EChartsOption>(() => {
     <!-- Operational Tables Section -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
       <!-- Recent Sales Orders -->
-      <div class="bg-white border border-slate-200 rounded shadow-xs overflow-hidden">
-        <div class="p-3 bg-slate-50/80 border-b border-slate-200 flex items-center justify-between">
+      <div class="bg-white border border-[#EAF0F5] rounded shadow-xs overflow-hidden">
+        <div class="p-3 bg-[#F5F7FA]/80 border-b border-[#EAF0F5] flex items-center justify-between">
           <div class="flex items-center gap-2">
             <Truck class="w-4 h-4 text-blue-700" />
             <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider">
@@ -379,7 +379,7 @@ const inventoryComparisonOptions = computed<EChartsOption>(() => {
 
         <div class="overflow-x-auto">
           <table class="w-full text-xs text-left">
-            <thead class="bg-slate-100 text-slate-600 font-semibold border-b border-slate-200 uppercase text-[10px] tracking-wider">
+            <thead class="bg-slate-100 text-slate-600 font-semibold border-b border-[#EAF0F5] uppercase text-[10px] tracking-wider">
               <tr>
                 <th class="py-2 px-3">No. SO</th>
                 <th class="py-2 px-3">Pelanggan</th>
@@ -392,7 +392,7 @@ const inventoryComparisonOptions = computed<EChartsOption>(() => {
               <tr
                 v-for="so in erpStore.recentSales"
                 :key="so.id"
-                class="hover:bg-slate-50/80 transition-colors"
+                class="hover:bg-[#F5F7FA]/80 transition-colors"
               >
                 <td class="py-2 px-3 font-mono font-semibold text-blue-900">
                   {{ so.soNumber }}
@@ -403,7 +403,7 @@ const inventoryComparisonOptions = computed<EChartsOption>(() => {
                 <td class="py-2 px-3 text-slate-600 truncate max-w-[100px]">
                   {{ so.depotName.replace('Depot ', '') }}
                 </td>
-                <td class="py-2 px-3 text-right font-mono font-medium text-slate-900">
+                <td class="py-2 px-3 text-right font-mono font-medium text-[#1D2024]">
                   {{ formatRupiah(so.totalAmount) }}
                 </td>
                 <td class="py-2 px-3 text-center">
@@ -416,8 +416,8 @@ const inventoryComparisonOptions = computed<EChartsOption>(() => {
       </div>
 
       <!-- Critical Stock / Low Stock Alerts -->
-      <div class="bg-white border border-slate-200 rounded shadow-xs overflow-hidden">
-        <div class="p-3 bg-slate-50/80 border-b border-slate-200 flex items-center justify-between">
+      <div class="bg-white border border-[#EAF0F5] rounded shadow-xs overflow-hidden">
+        <div class="p-3 bg-[#F5F7FA]/80 border-b border-[#EAF0F5] flex items-center justify-between">
           <div class="flex items-center gap-2">
             <AlertTriangle class="w-4 h-4 text-amber-600" />
             <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider">
@@ -431,7 +431,7 @@ const inventoryComparisonOptions = computed<EChartsOption>(() => {
 
         <div class="overflow-x-auto">
           <table class="w-full text-xs text-left">
-            <thead class="bg-slate-100 text-slate-600 font-semibold border-b border-slate-200 uppercase text-[10px] tracking-wider">
+            <thead class="bg-slate-100 text-slate-600 font-semibold border-b border-[#EAF0F5] uppercase text-[10px] tracking-wider">
               <tr>
                 <th class="py-2 px-3">Produk</th>
                 <th class="py-2 px-3">Depot</th>
@@ -444,7 +444,7 @@ const inventoryComparisonOptions = computed<EChartsOption>(() => {
               <tr
                 v-for="item in erpStore.lowStockAlerts"
                 :key="`${item.depotId}-${item.productId}`"
-                class="hover:bg-slate-50/80 transition-colors"
+                class="hover:bg-[#F5F7FA]/80 transition-colors"
               >
                 <td class="py-2 px-3 font-semibold text-slate-800">
                   {{ item.productName }}
@@ -455,7 +455,7 @@ const inventoryComparisonOptions = computed<EChartsOption>(() => {
                 <td class="py-2 px-3 text-right font-mono font-bold text-amber-700">
                   {{ formatNumber(item.quantity) }} {{ item.unit }}
                 </td>
-                <td class="py-2 px-3 text-right font-mono text-slate-500">
+                <td class="py-2 px-3 text-right font-mono text-[#425B73]">
                   {{ formatNumber(item.minStock) }}
                 </td>
                 <td class="py-2 px-3 text-center">
@@ -468,8 +468,8 @@ const inventoryComparisonOptions = computed<EChartsOption>(() => {
       </div>
 
       <!-- Recent Purchase Orders -->
-      <div class="bg-white border border-slate-200 rounded shadow-xs overflow-hidden">
-        <div class="p-3 bg-slate-50/80 border-b border-slate-200 flex items-center justify-between">
+      <div class="bg-white border border-[#EAF0F5] rounded shadow-xs overflow-hidden">
+        <div class="p-3 bg-[#F5F7FA]/80 border-b border-[#EAF0F5] flex items-center justify-between">
           <div class="flex items-center gap-2">
             <ShoppingBag class="w-4 h-4 text-blue-700" />
             <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider">
@@ -483,7 +483,7 @@ const inventoryComparisonOptions = computed<EChartsOption>(() => {
 
         <div class="overflow-x-auto">
           <table class="w-full text-xs text-left">
-            <thead class="bg-slate-100 text-slate-600 font-semibold border-b border-slate-200 uppercase text-[10px] tracking-wider">
+            <thead class="bg-slate-100 text-slate-600 font-semibold border-b border-[#EAF0F5] uppercase text-[10px] tracking-wider">
               <tr>
                 <th class="py-2 px-3">No. PO</th>
                 <th class="py-2 px-3">Pemasok</th>
@@ -496,7 +496,7 @@ const inventoryComparisonOptions = computed<EChartsOption>(() => {
               <tr
                 v-for="po in erpStore.recentPurchaseOrders"
                 :key="po.id"
-                class="hover:bg-slate-50/80 transition-colors"
+                class="hover:bg-[#F5F7FA]/80 transition-colors"
               >
                 <td class="py-2 px-3 font-mono font-semibold text-blue-900">
                   {{ po.poNumber }}
@@ -504,10 +504,10 @@ const inventoryComparisonOptions = computed<EChartsOption>(() => {
                 <td class="py-2 px-3 truncate max-w-[150px] text-slate-800">
                   {{ po.supplierName }}
                 </td>
-                <td class="py-2 px-3 text-slate-500">
+                <td class="py-2 px-3 text-[#425B73]">
                   {{ formatDate(po.orderDate) }}
                 </td>
-                <td class="py-2 px-3 text-right font-mono font-medium text-slate-900">
+                <td class="py-2 px-3 text-right font-mono font-medium text-[#1D2024]">
                   {{ formatRupiah(po.totalAmount) }}
                 </td>
                 <td class="py-2 px-3 text-center">
@@ -520,8 +520,8 @@ const inventoryComparisonOptions = computed<EChartsOption>(() => {
       </div>
 
       <!-- Outstanding Invoices / Receivables -->
-      <div class="bg-white border border-slate-200 rounded shadow-xs overflow-hidden">
-        <div class="p-3 bg-slate-50/80 border-b border-slate-200 flex items-center justify-between">
+      <div class="bg-white border border-[#EAF0F5] rounded shadow-xs overflow-hidden">
+        <div class="p-3 bg-[#F5F7FA]/80 border-b border-[#EAF0F5] flex items-center justify-between">
           <div class="flex items-center gap-2">
             <FileText class="w-4 h-4 text-blue-700" />
             <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider">
@@ -535,7 +535,7 @@ const inventoryComparisonOptions = computed<EChartsOption>(() => {
 
         <div class="overflow-x-auto">
           <table class="w-full text-xs text-left">
-            <thead class="bg-slate-100 text-slate-600 font-semibold border-b border-slate-200 uppercase text-[10px] tracking-wider">
+            <thead class="bg-slate-100 text-slate-600 font-semibold border-b border-[#EAF0F5] uppercase text-[10px] tracking-wider">
               <tr>
                 <th class="py-2 px-3">No. Faktur</th>
                 <th class="py-2 px-3">Pelanggan</th>
@@ -548,7 +548,7 @@ const inventoryComparisonOptions = computed<EChartsOption>(() => {
               <tr
                 v-for="inv in erpStore.outstandingInvoices"
                 :key="inv.id"
-                class="hover:bg-slate-50/80 transition-colors"
+                class="hover:bg-[#F5F7FA]/80 transition-colors"
               >
                 <td class="py-2 px-3 font-mono font-semibold text-blue-900">
                   {{ inv.invoiceNumber }}
@@ -559,7 +559,7 @@ const inventoryComparisonOptions = computed<EChartsOption>(() => {
                 <td class="py-2 px-3 text-slate-600">
                   {{ formatDate(inv.dueDate) }}
                 </td>
-                <td class="py-2 px-3 text-right font-mono font-bold text-slate-900">
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#1D2024]">
                   {{ formatRupiah(inv.outstandingAmount) }}
                 </td>
                 <td class="py-2 px-3 text-center">

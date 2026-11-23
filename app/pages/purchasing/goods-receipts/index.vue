@@ -40,10 +40,10 @@ const filteredReceipts = computed(() => {
       placeholder="Cari nomor GR, referensi PO, atau nama penerima..."
     />
 
-    <div class="bg-white border border-slate-200 rounded shadow-xs overflow-hidden">
+    <div class="bg-white border border-[#EAF0F5] rounded shadow-xs overflow-hidden">
       <div class="overflow-x-auto">
         <table class="w-full text-xs text-left">
-          <thead class="bg-slate-100 text-slate-600 font-semibold border-b border-slate-200 uppercase text-[10px] tracking-wider">
+          <thead class="bg-slate-100 text-slate-600 font-semibold border-b border-[#EAF0F5] uppercase text-[10px] tracking-wider">
             <tr>
               <th class="py-2.5 px-3">No. GR</th>
               <th class="py-2.5 px-3">Ref. PO</th>
@@ -59,12 +59,12 @@ const filteredReceipts = computed(() => {
             <tr
               v-for="gr in filteredReceipts"
               :key="gr.id"
-              class="hover:bg-slate-50 transition-colors"
+              class="hover:bg-[#F5F7FA] transition-colors"
             >
               <td class="py-2.5 px-3 font-mono font-semibold text-blue-900">
                 {{ gr.grNumber }}
               </td>
-              <td class="py-2.5 px-3 font-mono font-semibold text-slate-700">
+              <td class="py-2.5 px-3 font-mono font-semibold text-[#1D2024]">
                 <NuxtLink to="/purchasing/purchase-orders" class="hover:underline text-blue-700">
                   {{ gr.poNumber }}
                 </NuxtLink>
@@ -78,7 +78,7 @@ const filteredReceipts = computed(() => {
               <td class="py-2.5 px-3 text-slate-600">
                 {{ formatDate(gr.receiptDate) }}
               </td>
-              <td class="py-2.5 px-3 text-slate-700">
+              <td class="py-2.5 px-3 text-[#1D2024]">
                 {{ gr.receivedBy }}
               </td>
               <td class="py-2.5 px-3">
@@ -92,7 +92,7 @@ const filteredReceipts = computed(() => {
                     <span class="font-mono font-bold text-emerald-800 bg-emerald-50 px-1 rounded">
                       +{{ formatNumber(item.qtyReceived) }}
                     </span>
-                    <span class="text-slate-400">({{ item.condition }})</span>
+                    <span class="text-[#647B91]">({{ item.condition }})</span>
                   </div>
                 </div>
               </td>

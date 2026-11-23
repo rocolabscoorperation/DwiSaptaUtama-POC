@@ -5,130 +5,192 @@
    PT Dwi Sapta Utama · ERP PoC
    ───────────────────────────────────────────── */
 :root {
-  /* Fonts */
-  --font-sans: "72", "72full", -apple-system, "Segoe UI", Arial, sans-serif;
+	/* Fonts */
+	--font-sans: "72", "72full", -apple-system, "Segoe UI", Arial, sans-serif;
 
-  /* Core palette */
-  --color-bg:          #F5F6F8;
-  --color-surface:     #FFFFFF;
-  --color-border:      #E0E5EB;
-  --color-border-soft: #EEF1F5;
+	/* Core palette */
+	--color-bg: #f5f7fa;
+	--color-surface: #ffffff;
+	--color-border: #d9e2ec;
+	--color-border-soft: #eaf0f5;
 
-  /* Text */
-  --color-text-primary:   #1D2024;
-  --color-text-secondary: #556B82;
-  --color-text-tertiary:  #8FA3B8;
+	/* Text */
+	--color-text-primary: #1d2024;
+	--color-text-secondary: #425b73;
+	--color-text-tertiary: #647b91;
 
-  /* SAP Shell */
-  --color-shell-bg:      #113261;
-  --color-shell-hover:   #1B4A8A;
-  --color-shell-border:  #1E4A80;
-  --color-shell-text:    #D3E4F5;
+	/* SAP Shell */
+	--color-shell-bg: #0f2744;
+	--color-shell-hover: #173d66;
+	--color-shell-border: #244c73;
+	--color-shell-text: #d7e5f2;
+	--color-shell-deep: #091e3a;
+	--color-shell-muted: #5b9dd4;
+	--color-shell-border-strong: #1a3b64;
 
-  /* Accent – Sapphire Blue */
-  --color-accent:          #0070F2;
-  --color-accent-hover:    #0057BC;
-  --color-accent-light:    #EEF4FF;
-  --color-accent-border:   #BADAFF;
+	/* Accent – Sapphire Blue */
+	--color-accent: #0a6ed1;
+	--color-accent-hover: #0854a0;
+	--color-accent-light: #eaf3fc;
+	--color-accent-border: #9cc7f0;
 
-  /* Semantic */
-  --color-success:      #256F3A;
-  --color-success-bg:   #F0FAF4;
-  --color-warning:      #915B00;
-  --color-warning-bg:   #FFF8EB;
-  --color-danger:       #AA0808;
-  --color-danger-bg:    #FFF0EF;
+	/* Semantic */
+	--color-success: #256f3a;
+	--color-success-bg: #f0faf4;
+	--color-warning: #915b00;
+	--color-warning-bg: #fff8eb;
+	--color-danger: #aa0808;
+	--color-danger-bg: #fff0ef;
 
-  /* Radius */
-  --radius-sm: 4px;
-  --radius-md: 6px;
-  --radius-lg: 8px;
+	/* Radius */
+	--radius-sm: 3px;
+	--radius-md: 4px;
+	--radius-lg: 6px;
+	--control-height: 44px;
+	--shadow-menu: 0 8px 24px rgba(15, 39, 68, 0.14);
+	--shadow-dialog: 0 16px 40px rgba(15, 39, 68, 0.18);
 }
 
 /* ─────────────────────────────────────────────
    BASE RESETS
    ───────────────────────────────────────────── */
 @layer base {
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
+	html {
+		font-family:
+			"72",
+			"72full",
+			-apple-system,
+			"Segoe UI",
+			Arial,
+			sans-serif;
+		font-size: 15px; /* Comfortable base scale so text-sm is ~13.5px and text-base is 15px */
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		color: #1e293b;
+		background-color: #f5f7fa;
+		line-height: 1.5;
+	}
 
-  html {
-    font-family: var(--font-sans);
-    font-size: 14px;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: var(--color-text-primary);
-    background-color: var(--color-bg);
-  }
+	body {
+		font-family:
+			"72",
+			"72full",
+			-apple-system,
+			"Segoe UI",
+			Arial,
+			sans-serif;
+		font-size: 0.9375rem; /* ~14px enterprise standard */
+		overflow-x: hidden;
+		background-color: var(--color-bg);
+	}
 
-  body {
-    font-family: var(--font-sans);
-    overflow-x: hidden;
-    background-color: var(--color-bg);
-  }
+	/* ERP uses one readable sans face. Numeric alignment stays tabular. */
+	.font-mono {
+		font-family: var(--font-sans) !important;
+		font-variant-numeric: tabular-nums;
+	}
 
-  h1, h2, h3, h4, h5, h6 {
-    color: var(--color-text-primary);
-    font-weight: 700;
-    line-height: 1.25;
-  }
+	button,
+	a,
+	select,
+	summary,
+	label,
+	input[type="checkbox"],
+	input[type="radio"] {
+		cursor: pointer;
+	}
 
-  input, select, textarea {
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    color: var(--color-text-primary);
-  }
+	button:disabled,
+	[aria-disabled="true"] {
+		cursor: not-allowed;
+	}
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.875rem;
-  }
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		color: var(--color-text-primary);
+		font-weight: 700;
+		line-height: 1.25;
+	}
 
-  th {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    color: var(--color-text-secondary);
-    background-color: var(--color-bg);
-    border-bottom: 1px solid var(--color-border);
-    padding: 10px 12px;
-    text-align: left;
-    white-space: nowrap;
-  }
+	input,
+	select,
+	textarea {
+		font-family: var(--font-sans);
+		font-size: 0.9375rem;
+		color: var(--color-text-primary);
+	}
 
-  td {
-    padding: 10px 12px;
-    border-bottom: 1px solid var(--color-border-soft);
-    color: var(--color-text-primary);
-    font-feature-settings: "tnum";
-    vertical-align: middle;
-  }
+	table {
+		font-size: 0.875rem; /* 14px */
+	}
 
-  tr:last-child td {
-    border-bottom: none;
-  }
+	th {
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.01em;
+		color: var(--color-text-secondary);
+		background-color: var(--color-bg);
+		border-bottom: 1px solid var(--color-border);
+		padding: 10px 12px;
+		text-align: left;
+		white-space: nowrap;
+	}
 
-  tr:hover td {
-    background-color: var(--color-accent-light);
-    transition: background-color 100ms ease;
-  }
+	td {
+		padding: 10px 12px;
+		border-bottom: 1px solid var(--color-border-soft);
+		color: var(--color-text-primary);
+		font-feature-settings: "tnum";
+		vertical-align: middle;
+	}
 
-  :focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 2px;
-  }
+	tr:last-child td {
+		border-bottom: none;
+	}
+
+	tr:hover td {
+		background-color: var(--color-accent-light);
+		transition: background-color 100ms ease;
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--color-accent);
+		outline-offset: 2px;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		*::before,
+		*::after {
+			scroll-behavior: auto !important;
+			transition-duration: 0.01ms !important;
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+		}
+	}
 }
 
 /* ─────────────────────────────────────────────
    SCROLLBAR
    ───────────────────────────────────────────── */
-::-webkit-scrollbar { width: 5px; height: 5px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #C8D3DF; border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: #9BAEC2; }
+::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+}
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+::-webkit-scrollbar-thumb {
+	background: #c8d3df;
+	border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: #9baec2;
+}
 
 /* ─────────────────────────────────────────────
    FIORI UTILITY CLASSES
@@ -136,77 +198,391 @@
 
 /* Buttons */
 .btn-primary {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 7px 14px;
-  background: var(--color-accent); color: #fff;
-  font-size: 0.8125rem; font-weight: 600;
-  border-radius: var(--radius-sm); border: 1px solid var(--color-accent);
-  cursor: pointer; transition: background 150ms ease; line-height: 1.4;
-  white-space: nowrap; font-family: var(--font-sans);
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	min-height: var(--control-height);
+	padding: 8px 14px;
+	background: var(--color-accent);
+	color: #fff;
+	font-size: 0.8125rem;
+	font-weight: 600;
+	border-radius: var(--radius-sm);
+	border: 1px solid var(--color-accent);
+	cursor: pointer;
+	transition: background 150ms ease;
+	line-height: 1.4;
+	white-space: nowrap;
+	font-family: var(--font-sans);
 }
-.btn-primary:hover { background: var(--color-accent-hover); border-color: var(--color-accent-hover); }
-.btn-primary:disabled { opacity: .5; cursor: not-allowed; }
+.btn-primary:hover {
+	background: var(--color-accent-hover);
+	border-color: var(--color-accent-hover);
+}
+.btn-primary:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
 
 .btn-secondary {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 7px 14px;
-  background: var(--color-surface); color: var(--color-text-primary);
-  font-size: 0.8125rem; font-weight: 600;
-  border-radius: var(--radius-sm); border: 1px solid var(--color-border);
-  cursor: pointer; transition: background 150ms ease, border-color 150ms ease; line-height: 1.4;
-  white-space: nowrap; font-family: var(--font-sans);
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	min-height: var(--control-height);
+	padding: 8px 14px;
+	background: var(--color-surface);
+	color: var(--color-text-primary);
+	font-size: 0.8125rem;
+	font-weight: 600;
+	border-radius: var(--radius-sm);
+	border: 1px solid var(--color-border);
+	cursor: pointer;
+	transition:
+		background 150ms ease,
+		border-color 150ms ease;
+	line-height: 1.4;
+	white-space: nowrap;
+	font-family: var(--font-sans);
 }
-.btn-secondary:hover { background: var(--color-bg); border-color: #B0BFC9; }
+.btn-secondary:hover {
+	background: var(--color-bg);
+	border-color: #b0bfc9;
+}
 
 .btn-danger {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 7px 14px;
-  background: var(--color-danger); color: #fff;
-  font-size: 0.8125rem; font-weight: 600;
-  border-radius: var(--radius-sm); border: 1px solid var(--color-danger);
-  cursor: pointer; transition: background 150ms ease; line-height: 1.4;
-  white-space: nowrap; font-family: var(--font-sans);
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	min-height: var(--control-height);
+	padding: 8px 14px;
+	background: var(--color-danger);
+	color: #fff;
+	font-size: 0.8125rem;
+	font-weight: 600;
+	border-radius: var(--radius-sm);
+	border: 1px solid var(--color-danger);
+	cursor: pointer;
+	transition: background 150ms ease;
+	line-height: 1.4;
+	white-space: nowrap;
+	font-family: var(--font-sans);
 }
-.btn-danger:hover { background: #880707; }
+.btn-danger:hover {
+	background: #880707;
+}
 
 /* Form inputs */
 .fiori-input {
-  width: 100%; padding: 7px 10px;
-  font-family: var(--font-sans); font-size: 0.875rem;
-  color: var(--color-text-primary); background: var(--color-surface);
-  border: 1px solid var(--color-border); border-radius: var(--radius-sm);
-  outline: none; transition: border-color 150ms ease, box-shadow 150ms ease; line-height: 1.4;
+	width: 100%;
+	min-height: var(--control-height);
+	padding: 8px 10px;
+	font-family: var(--font-sans);
+	font-size: 0.875rem;
+	color: var(--color-text-primary);
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-sm);
+	outline: none;
+	transition:
+		border-color 150ms ease,
+		box-shadow 150ms ease;
+	line-height: 1.4;
 }
-.fiori-input::placeholder { color: var(--color-text-tertiary); }
-.fiori-input:hover { border-color: #B0BFC9; }
-.fiori-input:focus { border-color: var(--color-accent); box-shadow: 0 0 0 3px rgba(0,112,242,.12); }
+.fiori-input::placeholder {
+	color: var(--color-text-tertiary);
+}
+.fiori-input:hover {
+	border-color: #b0bfc9;
+}
+.fiori-input:focus {
+	border-color: var(--color-accent);
+	box-shadow: 0 0 0 3px rgba(0, 112, 242, 0.12);
+}
 
 .fiori-label {
-  display: block; font-size: 0.75rem; font-weight: 600;
-  color: var(--color-text-secondary); margin-bottom: 4px; letter-spacing: 0.01em;
+	display: block;
+	font-size: 0.75rem;
+	font-weight: 600;
+	color: var(--color-text-secondary);
+	margin-bottom: 4px;
+	letter-spacing: 0.01em;
 }
 
 /* Panels & tables */
 .fiori-panel {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-md);
+}
+
+.app-main-content {
+	max-width: 1440px;
+}
+
+.fiori-panel-header {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 12px 16px;
+	border-bottom: 1px solid var(--color-border-soft);
+}
+
+.fiori-link {
+	color: var(--color-accent);
+	font-weight: 600;
+}
+
+.fiori-link:hover {
+	color: var(--color-accent-hover);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+.fiori-section-title {
+	color: var(--color-text-primary);
+	font-size: 0.9375rem;
+	font-weight: 700;
+	line-height: 1.3;
+}
+
+.fiori-table-scroll {
+	max-width: 100%;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
 }
 
 .fiori-table-wrap {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  overflow: hidden;
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-md);
+	overflow: hidden;
+}
+
+/* Shared component primitives. Keep page templates focused on layout. */
+.fiori-toolbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.625rem;
+	padding: 0.625rem 0.75rem;
+	margin-bottom: 0.75rem;
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-md);
+}
+
+.fiori-menu {
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-md);
+	box-shadow: var(--shadow-menu);
+}
+
+.fiori-shell-control {
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.fiori-modal-backdrop {
+	background: rgba(10, 22, 40, 0.65);
+}
+.fiori-dialog {
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-dialog);
+}
+.fiori-dashed-panel {
+	border: 1px dashed var(--color-border);
+}
+
+.fiori-menu-heading {
+	padding: 0.5rem 0.75rem;
+	color: var(--color-text-secondary);
+	background: var(--color-bg);
+	border-bottom: 1px solid var(--color-border);
+	font-size: 0.6875rem;
+	font-weight: 600;
+}
+
+.fiori-card-footer {
+	margin-top: 0.625rem;
+	padding-top: 0.5rem;
+	border-top: 1px solid var(--color-border-soft);
+}
+
+.status-badge {
+	display: inline-flex;
+	align-items: center;
+	border: 1px solid transparent;
+	border-radius: var(--radius-sm);
+	font-weight: 600;
+	line-height: 1;
+}
+
+.status-badge--sm {
+	padding: 0.125rem 0.375rem;
+	font-size: 0.625rem;
+}
+.status-badge--md {
+	padding: 0.125rem 0.5rem;
+	font-size: 0.6875rem;
+}
+.status-badge--success {
+	color: var(--color-success);
+	background: var(--color-success-bg);
+	border-color: #86cfac;
+}
+.status-badge--warning {
+	color: var(--color-warning);
+	background: var(--color-warning-bg);
+	border-color: #f6c860;
+}
+.status-badge--danger {
+	color: var(--color-danger);
+	background: var(--color-danger-bg);
+	border-color: #fcbcbb;
+}
+.status-badge--info {
+	color: var(--color-accent-hover);
+	background: var(--color-accent-light);
+	border-color: var(--color-accent-border);
+}
+.status-badge--neutral {
+	color: var(--color-text-secondary);
+	background: var(--color-bg);
+	border-color: var(--color-border);
+}
+.status-badge--neutral .status-badge__dot {
+	background: var(--color-text-tertiary);
+}
+
+@media (max-width: 640px) {
+	html {
+		font-size: 13px;
+	}
+	th,
+	td {
+		padding: 9px 10px;
+	}
+	.btn-primary,
+	.btn-secondary,
+	.btn-danger {
+		width: 100%;
+		justify-content: center;
+	}
+	.fiori-toolbar {
+		align-items: stretch;
+		flex-direction: column;
+	}
+}
+
+/* ─────────────────────────────────────────────
+   PAGE CONSISTENCY
+   Keep legacy page templates on dashboard visual language.
+   ───────────────────────────────────────────── */
+main {
+	font-family: var(--font-sans);
+	color: var(--color-text-primary);
+}
+
+main h1 {
+	color: var(--color-text-primary);
+	font-size: 1.25rem;
+	font-weight: 700;
+	line-height: 1.25;
+	letter-spacing: -0.01em;
+}
+main h2 {
+	color: var(--color-text-primary);
+	font-size: 1rem;
+	font-weight: 700;
+	line-height: 1.3;
+}
+main h3 {
+	color: var(--color-text-primary);
+	font-size: 0.875rem;
+	font-weight: 700;
+	line-height: 1.3;
+}
+main p {
+	color: var(--color-text-secondary);
+}
+
+/* Legacy arbitrary colors map to shared palette. */
+main [class*="border-[#EAF0F5]"],
+main [class*="border-[#D9E2EC]"] {
+	border-color: var(--color-border) !important;
+}
+main [class*="bg-[#F5F7FA]"] {
+	background-color: var(--color-bg) !important;
+}
+main [class*="text-[#1D2024]"] {
+	color: var(--color-text-primary) !important;
+}
+main [class*="text-[#425B73]"],
+main [class*="text-[#556B82]"] {
+	color: var(--color-text-secondary) !important;
+}
+main [class*="text-[#647B91]"] {
+	color: var(--color-text-tertiary) !important;
+}
+main [class*="text-[#0f3b6c]"] {
+	color: var(--color-shell-bg) !important;
+}
+main [class*="bg-[#0f3b6c]"],
+main [class*="bg-[#0b2447]"] {
+	background-color: var(--color-shell-bg) !important;
+}
+main [class*="bg-[#0A6ED1]"] {
+	background-color: var(--color-accent) !important;
+}
+
+/* Every modal/object header uses navy with white text. */
+main [class*="bg-[#0b2447]"],
+main [class*="bg-[#0f3b6c]"] {
+	color: #fff !important;
+}
+main [class*="bg-[#0b2447]"] *,
+main [class*="bg-[#0f3b6c]"] * {
+	color: #fff !important;
+}
+
+/* Shared confirmation dialog header. */
+.fiori-dialog > :first-child {
+	color: #fff;
+}
+.fiori-dialog > :first-child * {
+	color: #fff;
 }
 
 /* ─────────────────────────────────────────────
    PRINT / PDF EXPORT
    ───────────────────────────────────────────── */
 @media print {
-  header, aside, .no-print, [data-no-print] { display: none !important; }
-  main { padding: 0 !important; margin: 0 !important; }
-  body { background: #fff !important; color: #000 !important; font-size: 11pt !important; }
-  .print-only { display: block !important; }
-  .fiori-panel, .fiori-table-wrap { border: 1px solid #ccc !important; box-shadow: none !important; }
+	header,
+	aside,
+	button,
+	.no-print {
+		display: none !important;
+	}
+
+	main {
+		padding: 0 !important;
+		margin: 0 !important;
+	}
+
+	body {
+		background-color: #ffffff !important;
+		color: #000000 !important;
+		font-size: 12pt !important;
+	}
+
+	.print-only {
+		display: block !important;
+	}
+
+	.print-card {
+		border: none !important;
+		box-shadow: none !important;
+	}
 }

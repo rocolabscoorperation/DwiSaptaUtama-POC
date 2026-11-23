@@ -41,10 +41,10 @@ const filteredDeliveries = computed(() => {
       placeholder="Cari nomor DO, nomor SO, nama toko/hotel, atau sopir..."
     />
 
-    <div class="bg-white border border-slate-200 rounded shadow-xs overflow-hidden">
+    <div class="bg-white border border-[#EAF0F5] rounded shadow-xs overflow-hidden">
       <div class="overflow-x-auto">
         <table class="w-full text-xs text-left">
-          <thead class="bg-slate-100 text-slate-600 font-semibold border-b border-slate-200 uppercase text-[10px] tracking-wider">
+          <thead class="bg-slate-100 text-slate-600 font-semibold border-b border-[#EAF0F5] uppercase text-[10px] tracking-wider">
             <tr>
               <th class="py-2.5 px-3">No. Surat Jalan</th>
               <th class="py-2.5 px-3">Ref. SO</th>
@@ -61,19 +61,19 @@ const filteredDeliveries = computed(() => {
             <tr
               v-for="d in filteredDeliveries"
               :key="d.id"
-              class="hover:bg-slate-50 transition-colors"
+              class="hover:bg-[#F5F7FA] transition-colors"
             >
               <td class="py-2.5 px-3 font-mono font-semibold text-blue-900">
                 {{ d.doNumber }}
               </td>
-              <td class="py-2.5 px-3 font-mono font-semibold text-slate-700">
+              <td class="py-2.5 px-3 font-mono font-semibold text-[#1D2024]">
                 <NuxtLink to="/sales/sales-orders" class="text-blue-700 hover:underline">
                   {{ d.soNumber }}
                 </NuxtLink>
               </td>
               <td class="py-2.5 px-3">
                 <div class="font-semibold text-slate-800">{{ d.customerName }}</div>
-                <div class="text-[10px] text-slate-500 truncate max-w-xs">{{ d.customerAddress }}</div>
+                <div class="text-[10px] text-[#425B73] truncate max-w-xs">{{ d.customerAddress }}</div>
               </td>
               <td class="py-2.5 px-3 text-slate-600">
                 {{ d.depotName }}
@@ -83,14 +83,14 @@ const filteredDeliveries = computed(() => {
               </td>
               <td class="py-2.5 px-3">
                 <div class="font-medium text-slate-800">{{ d.driverName }}</div>
-                <div class="font-mono text-[10px] text-slate-500">{{ d.vehiclePlate }}</div>
+                <div class="font-mono text-[10px] text-[#425B73]">{{ d.vehiclePlate }}</div>
               </td>
               <td class="py-2.5 px-3">
                 <div class="space-y-0.5">
                   <div
                     v-for="(item, idx) in d.items"
                     :key="idx"
-                    class="text-[11px] text-slate-700"
+                    class="text-[11px] text-[#1D2024]"
                   >
                     <span>{{ item.productName }}:</span>
                     <span class="font-mono font-bold text-blue-900 ml-1">
@@ -101,7 +101,7 @@ const filteredDeliveries = computed(() => {
               </td>
               <td class="py-2.5 px-3">
                 <div class="font-medium text-slate-800">{{ d.recipientName || '-' }}</div>
-                <div v-if="d.receivedTime" class="font-mono text-[10px] text-slate-400">
+                <div v-if="d.receivedTime" class="font-mono text-[10px] text-[#647B91]">
                   {{ d.receivedTime }}
                 </div>
               </td>
