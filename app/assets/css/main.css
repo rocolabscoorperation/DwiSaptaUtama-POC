@@ -1,107 +1,212 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────
+   SAP FIORI DESIGN TOKENS
+   PT Dwi Sapta Utama · ERP PoC
+   ───────────────────────────────────────────── */
 :root {
-  --sap-font: "72", "72full", -apple-system, "Segoe UI", Arial, sans-serif;
+  /* Fonts */
+  --font-sans: "72", "72full", -apple-system, "Segoe UI", Arial, sans-serif;
+
+  /* Core palette */
+  --color-bg:          #F5F6F8;
+  --color-surface:     #FFFFFF;
+  --color-border:      #E0E5EB;
+  --color-border-soft: #EEF1F5;
+
+  /* Text */
+  --color-text-primary:   #1D2024;
+  --color-text-secondary: #556B82;
+  --color-text-tertiary:  #8FA3B8;
+
+  /* SAP Shell */
+  --color-shell-bg:      #113261;
+  --color-shell-hover:   #1B4A8A;
+  --color-shell-border:  #1E4A80;
+  --color-shell-text:    #D3E4F5;
+
+  /* Accent – Sapphire Blue */
+  --color-accent:          #0070F2;
+  --color-accent-hover:    #0057BC;
+  --color-accent-light:    #EEF4FF;
+  --color-accent-border:   #BADAFF;
+
+  /* Semantic */
+  --color-success:      #256F3A;
+  --color-success-bg:   #F0FAF4;
+  --color-warning:      #915B00;
+  --color-warning-bg:   #FFF8EB;
+  --color-danger:       #AA0808;
+  --color-danger-bg:    #FFF0EF;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
 }
 
+/* ─────────────────────────────────────────────
+   BASE RESETS
+   ───────────────────────────────────────────── */
 @layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
   html {
-    font-family: "72", "72full", -apple-system, "Segoe UI", Arial, sans-serif;
-    font-size: 15px; /* Comfortable base scale so text-sm is ~13.5px and text-base is 15px */
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #1e293b;
-    background-color: #f5f7fa;
-    line-height: 1.5;
+    color: var(--color-text-primary);
+    background-color: var(--color-bg);
   }
 
   body {
-    font-family: "72", "72full", -apple-system, "Segoe UI", Arial, sans-serif;
-    font-size: 0.9375rem; /* ~14px enterprise standard */
+    font-family: var(--font-sans);
     overflow-x: hidden;
+    background-color: var(--color-bg);
   }
 
-  /* Ensure enterprise tables have comfortable, clear typography */
-  table {
-    font-size: 0.875rem; /* 14px */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text-primary);
+    font-weight: 700;
+    line-height: 1.25;
   }
 
-  table th {
-    font-size: 0.8125rem; /* ~13px */
-    letter-spacing: 0.025em;
-  }
-
-  table td {
-    font-size: 0.875rem; /* 14px */
-    font-feature-settings: "tnum";
-  }
-
-  /* Form inputs, select dropdowns & textareas legible standard */
   input, select, textarea {
-    font-family: inherit;
-    font-size: 0.875rem; /* 14px */
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    color: var(--color-text-primary);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+
+  th {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-text-secondary);
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    padding: 10px 12px;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--color-border-soft);
+    color: var(--color-text-primary);
+    font-feature-settings: "tnum";
+    vertical-align: middle;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:hover td {
+    background-color: var(--color-accent-light);
+    transition: background-color 100ms ease;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
   }
 }
 
-/* Guard against microscopic text sizes */
-.text-\[9px\], .text-\[10px\] {
-  font-size: 0.75rem !important; /* Minimum 12px for clear readability */
+/* ─────────────────────────────────────────────
+   SCROLLBAR
+   ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #C8D3DF; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #9BAEC2; }
+
+/* ─────────────────────────────────────────────
+   FIORI UTILITY CLASSES
+   ───────────────────────────────────────────── */
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 14px;
+  background: var(--color-accent); color: #fff;
+  font-size: 0.8125rem; font-weight: 600;
+  border-radius: var(--radius-sm); border: 1px solid var(--color-accent);
+  cursor: pointer; transition: background 150ms ease; line-height: 1.4;
+  white-space: nowrap; font-family: var(--font-sans);
+}
+.btn-primary:hover { background: var(--color-accent-hover); border-color: var(--color-accent-hover); }
+.btn-primary:disabled { opacity: .5; cursor: not-allowed; }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 14px;
+  background: var(--color-surface); color: var(--color-text-primary);
+  font-size: 0.8125rem; font-weight: 600;
+  border-radius: var(--radius-sm); border: 1px solid var(--color-border);
+  cursor: pointer; transition: background 150ms ease, border-color 150ms ease; line-height: 1.4;
+  white-space: nowrap; font-family: var(--font-sans);
+}
+.btn-secondary:hover { background: var(--color-bg); border-color: #B0BFC9; }
+
+.btn-danger {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 14px;
+  background: var(--color-danger); color: #fff;
+  font-size: 0.8125rem; font-weight: 600;
+  border-radius: var(--radius-sm); border: 1px solid var(--color-danger);
+  cursor: pointer; transition: background 150ms ease; line-height: 1.4;
+  white-space: nowrap; font-family: var(--font-sans);
+}
+.btn-danger:hover { background: #880707; }
+
+/* Form inputs */
+.fiori-input {
+  width: 100%; padding: 7px 10px;
+  font-family: var(--font-sans); font-size: 0.875rem;
+  color: var(--color-text-primary); background: var(--color-surface);
+  border: 1px solid var(--color-border); border-radius: var(--radius-sm);
+  outline: none; transition: border-color 150ms ease, box-shadow 150ms ease; line-height: 1.4;
+}
+.fiori-input::placeholder { color: var(--color-text-tertiary); }
+.fiori-input:hover { border-color: #B0BFC9; }
+.fiori-input:focus { border-color: var(--color-accent); box-shadow: 0 0 0 3px rgba(0,112,242,.12); }
+
+.fiori-label {
+  display: block; font-size: 0.75rem; font-weight: 600;
+  color: var(--color-text-secondary); margin-bottom: 4px; letter-spacing: 0.01em;
 }
 
-.text-\[11px\] {
-  font-size: 0.775rem !important; /* ~12.5px */
+/* Panels & tables */
+.fiori-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
 }
 
-/* Custom compact scrollbar for enterprise tables */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+.fiori-table-wrap {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
 }
 
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
-
-/* Table tabular numbers */
-table td {
-  font-feature-settings: "tnum";
-}
-
-/* Print / PDF Export Styles */
+/* ─────────────────────────────────────────────
+   PRINT / PDF EXPORT
+   ───────────────────────────────────────────── */
 @media print {
-  header,
-  aside,
-  button,
-  .no-print {
-    display: none !important;
-  }
-
-  main {
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  body {
-    background-color: #ffffff !important;
-    color: #000000 !important;
-    font-size: 12pt !important;
-  }
-
-  .print-only {
-    display: block !important;
-  }
-
-  .print-card {
-    border: none !important;
-    box-shadow: none !important;
-  }
+  header, aside, .no-print, [data-no-print] { display: none !important; }
+  main { padding: 0 !important; margin: 0 !important; }
+  body { background: #fff !important; color: #000 !important; font-size: 11pt !important; }
+  .print-only { display: block !important; }
+  .fiori-panel, .fiori-table-wrap { border: 1px solid #ccc !important; box-shadow: none !important; }
 }

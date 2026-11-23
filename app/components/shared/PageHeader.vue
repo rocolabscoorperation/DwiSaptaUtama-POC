@@ -12,21 +12,21 @@ const depotStore = useDepotStore()
 </script>
 
 <template>
-  <div class="mb-4 pb-3 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+  <div class="mb-5 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
     <div>
-      <div class="flex items-center gap-2">
-        <h1 class="text-xl font-bold text-slate-900 tracking-tight">
+      <div class="flex items-center gap-2.5 flex-wrap">
+        <h1 class="text-xl font-bold text-[#1D2024] leading-tight tracking-tight">
           {{ title }}
         </h1>
         <div
           v-if="showDepotTag"
-          class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200"
+          class="inline-flex items-center gap-1.5 px-2 py-1 rounded text-xs font-semibold bg-[#EEF4FF] text-[#0070F2] border border-[#BADAFF]"
         >
-          <Building2 class="w-3.5 h-3.5 text-slate-500" />
+          <Building2 class="w-3.5 h-3.5" />
           <span>{{ depotStore.selectedDepotId === 'ALL' ? 'Semua Depot' : depotStore.currentDepot?.name }}</span>
         </div>
       </div>
-      <p v-if="subtitle" class="text-xs text-slate-500 mt-0.5">
+      <p v-if="subtitle" class="text-sm text-[#556B82] mt-1 leading-snug">
         {{ subtitle }}
       </p>
     </div>

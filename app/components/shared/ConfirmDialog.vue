@@ -18,43 +18,40 @@ const emit = defineEmits<{
 <template>
   <div
     v-if="isOpen"
-    class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4 animate-in fade-in"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4"
+    style="background: rgba(10,22,40,.65);"
   >
-    <div class="bg-white rounded border border-slate-200 shadow-xl max-w-md w-full overflow-hidden">
-      <div class="px-4 py-3 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
-        <div class="flex items-center gap-2 text-rose-700">
-          <AlertTriangle class="w-4 h-4" />
-          <h3 class="text-xs font-bold uppercase tracking-wider">
-            {{ title || 'Konfirmasi Penghapusan' }}
-          </h3>
+    <div
+      class="bg-white w-full max-w-sm overflow-hidden"
+      style="border-radius: 6px; border: 1px solid #E0E5EB; box-shadow: 0 16px 40px rgba(0,0,0,.18);"
+    >
+      <!-- Header -->
+      <div class="px-4 py-3 flex items-center justify-between" style="border-bottom: 1px solid #E0E5EB; background: #F5F6F8;">
+        <div class="flex items-center gap-2 text-[#AA0808]">
+          <AlertTriangle class="w-4 h-4 shrink-0" />
+          <span class="text-sm font-bold">{{ title || 'Konfirmasi Penghapusan' }}</span>
         </div>
         <button
           type="button"
-          class="text-slate-400 hover:text-slate-600"
+          class="text-[#8FA3B8] hover:text-[#1D2024] p-0.5 rounded transition-colors cursor-pointer"
           @click="emit('cancel')"
         >
           <X class="w-4 h-4" />
         </button>
       </div>
 
-      <div class="p-4 text-xs text-slate-600 leading-relaxed">
+      <!-- Body -->
+      <div class="px-4 py-4 text-sm text-[#556B82] leading-relaxed">
         {{ message }}
       </div>
 
-      <div class="px-4 py-3 bg-slate-50 border-t border-slate-200 flex items-center justify-end gap-2">
-        <button
-          type="button"
-          class="px-3 py-1.5 rounded text-xs font-medium border border-slate-300 text-slate-700 hover:bg-slate-100 transition-colors"
-          @click="emit('cancel')"
-        >
+      <!-- Footer -->
+      <div class="px-4 py-3 flex items-center justify-end gap-2" style="border-top: 1px solid #E0E5EB; background: #F5F6F8;">
+        <button type="button" class="btn-secondary" @click="emit('cancel')">
           {{ cancelText || 'Batal' }}
         </button>
-        <button
-          type="button"
-          class="px-3 py-1.5 rounded text-xs font-semibold bg-rose-700 hover:bg-rose-800 text-white transition-colors shadow-xs"
-          @click="emit('confirm')"
-        >
-          {{ confirmText || 'Ya, Hapus Data' }}
+        <button type="button" class="btn-danger" @click="emit('confirm')">
+          {{ confirmText || 'Ya, Hapus' }}
         </button>
       </div>
     </div>

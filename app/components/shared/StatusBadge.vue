@@ -9,66 +9,31 @@ const props = defineProps<{
 const badgeConfig = computed(() => {
   const s = props.status?.toLowerCase() || ''
 
-  // Success variants
-  if (
-    ['selesai', 'diterima penuh', 'lunas', 'aman', 'posted', 'active', 'terkirim & diterima', 'lancar'].includes(s)
-  ) {
-    return {
-      bg: 'bg-emerald-50 text-emerald-800 border-emerald-300',
-      dot: 'bg-emerald-600'
-    }
+  if (['selesai', 'diterima penuh', 'lunas', 'aman', 'posted', 'active', 'terkirim & diterima', 'lancar'].includes(s)) {
+    return { bg: 'bg-[#F0FAF4] text-[#256F3A] border-[#86CFAC]', dot: 'bg-[#256F3A]' }
   }
-
-  // Warning variants
-  if (
-    [
-      'menipis',
-      'sebagian diterima',
-      'belum dibayar',
-      'sebagian dibayar',
-      'dalam transit',
-      'diproses',
-      'menunggu persetujuan',
-      'dalam pengiriman',
-      'diajukan'
-    ].includes(s)
-  ) {
-    return {
-      bg: 'bg-amber-50 text-amber-800 border-amber-300',
-      dot: 'bg-amber-600'
-    }
+  if ([
+    'menipis', 'sebagian diterima', 'belum dibayar', 'sebagian dibayar',
+    'dalam transit', 'diproses', 'menunggu persetujuan', 'dalam pengiriman', 'diajukan'
+  ].includes(s)) {
+    return { bg: 'bg-[#FFF8EB] text-[#915B00] border-[#F6C860]', dot: 'bg-[#D97706]' }
   }
-
-  // Danger / Error variants
   if (['kritis', 'jatuh tempo', 'ditolak', 'dibatalkan', 'inactive', 'rusak/cacat', 'gagal kirim'].includes(s)) {
-    return {
-      bg: 'bg-rose-50 text-rose-800 border-rose-300',
-      dot: 'bg-rose-600'
-    }
+    return { bg: 'bg-[#FFF0EF] text-[#AA0808] border-[#FCBCBB]', dot: 'bg-[#AA0808]' }
   }
-
-  // Info / Sky variants
   if (['disetujui', 'corporate', 'reseller', 'transfer bank', 'siap dikirim'].includes(s)) {
-    return {
-      bg: 'bg-sky-50 text-sky-800 border-sky-300',
-      dot: 'bg-sky-600'
-    }
+    return { bg: 'bg-[#EEF4FF] text-[#0057BC] border-[#BADAFF]', dot: 'bg-[#0070F2]' }
   }
-
-  // Neutral default
-  return {
-    bg: 'bg-slate-100 text-slate-700 border-slate-300',
-    dot: 'bg-slate-500'
-  }
+  return { bg: 'bg-[#F5F6F8] text-[#556B82] border-[#E0E5EB]', dot: 'bg-[#8FA3B8]' }
 })
 </script>
 
 <template>
   <span
-    class="inline-flex items-center gap-1.5 font-medium border rounded-full leading-none transition-colors"
+    class="inline-flex items-center gap-1.5 font-semibold border rounded leading-none transition-colors"
     :class="[
       badgeConfig.bg,
-      size === 'sm' ? 'px-2 py-0.5 text-[11px]' : 'px-2.5 py-1 text-xs'
+      size === 'sm' ? 'px-1.5 py-0.5 text-[10px]' : 'px-2 py-0.5 text-[11px]'
     ]"
   >
     <span class="w-1.5 h-1.5 rounded-full shrink-0" :class="badgeConfig.dot" />

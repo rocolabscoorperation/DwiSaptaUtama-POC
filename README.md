@@ -59,28 +59,30 @@ DwiSaptaUtama-POC/
 
 Semua akun demo menggunakan kata sandi: `demo123`
 
-| No | Peran (Role) | Email Demo | Password | Cakupan Depot | Tanggung Jawab & Modul Akses |
-|----|--------------|------------|----------|---------------|------------------------------|
-| 1 | **Super Admin** | `superadmin@demo.com` | `demo123` | Semua Depot (DPS & JBR) | Akses seluruh modul, manajemen user, dan hak akses |
-| 2 | **Owner / Management** | `owner@demo.com` | `demo123` | Semua Depot (DPS & JBR) | Dashboard analitik eksekutif, rekapitulasi keuangan, dan laporan |
-| 3 | **Admin Depot** | `admin@demo.com` | `demo123` | Depot Denpasar (`DEP-001`) | Operasional harian cabang: master data, PO, stok, dan penjualan |
-| 4 | **Purchasing Staff** | `purchasing@demo.com` | `demo123` | Semua Depot | Pengadaan pabrik Danone, data supplier, dan PO |
-| 5 | **Warehouse Staff** | `warehouse@demo.com` | `demo123` | Depot Denpasar (`DEP-001`) | Penerimaan barang (GR), kartu stok, opname, dan transfer antar depot |
-| 6 | **Sales Staff** | `sales@demo.com` | `demo123` | Semua Depot | Pengelolaan mitra pelanggan, sales order, surat jalan, dan faktur |
-| 7 | **Finance Staff** | `finance@demo.com` | `demo123` | Semua Depot | Buku kas/bank, jurnal umum, kontrol piutang (AR) & utang (AP), laba rugi |
+| No  | Peran (Role)           | Email Demo            | Password  | Cakupan Depot              | Tanggung Jawab & Modul Akses                                             |
+| --- | ---------------------- | --------------------- | --------- | -------------------------- | ------------------------------------------------------------------------ |
+| 1   | **Super Admin**        | `superadmin@demo.com` | `demo123` | Semua Depot (DPS & JBR)    | Akses seluruh modul, manajemen user, dan hak akses                       |
+| 2   | **Owner / Management** | `owner@demo.com`      | `demo123` | Semua Depot (DPS & JBR)    | Dashboard analitik eksekutif, rekapitulasi keuangan, dan laporan         |
+| 3   | **Admin Depot**        | `admin@demo.com`      | `demo123` | Depot Denpasar (`DEP-001`) | Operasional harian cabang: master data, PO, stok, dan penjualan          |
+| 4   | **Purchasing Staff**   | `purchasing@demo.com` | `demo123` | Semua Depot                | Pengadaan pabrik Danone, data supplier, dan PO                           |
+| 5   | **Warehouse Staff**    | `warehouse@demo.com`  | `demo123` | Depot Denpasar (`DEP-001`) | Penerimaan barang (GR), kartu stok, opname, dan transfer antar depot     |
+| 6   | **Sales Staff**        | `sales@demo.com`      | `demo123` | Semua Depot                | Pengelolaan mitra pelanggan, sales order, surat jalan, dan faktur        |
+| 7   | **Finance Staff**      | `finance@demo.com`    | `demo123` | Semua Depot                | Buku kas/bank, jurnal umum, kontrol piutang (AR) & utang (AP), laba rugi |
 
-*Tip Demo: Pengguna dapat berganti peran secara instan melalui dropdown profil di sudut kanan atas header menggunakan fitur **Simulasi Ganti Peran (PoC Demo)**.*
+_Tip Demo: Pengguna dapat berganti peran secara instan melalui dropdown profil di sudut kanan atas header menggunakan fitur **Simulasi Ganti Peran (PoC Demo)**._
 
 ---
 
 ## 4. Konteks Wilayah Depot
 
 Sistem mendukung switching pangkalan depot langsung dari dropdown header:
+
 1. **Depot Denpasar (`DEP-001`)**: Jl. Teuku Umar Barat No. 88, Denpasar.
 2. **Depot Jimbaran (`DEP-002`)**: Jl. Raya Uluwatu No. 45, Jimbaran, Badung.
 3. **Semua Depot (Konsolidasi)**: Rekapitulasi gabungan performa (khusus Super Admin dan Owner).
 
 Saat konteks depot diubah:
+
 - Metrik KPI di dashboard menyesuaikan nilai penjualan, pembelian, dan valuasi stok depot terpilih.
 - Grafik tren penjualan dan perputaran produk memperbarui data series secara real-time.
 - Tabel daftar transaksi, mutasi stok, dan persediaan tersaring otomatis.
@@ -90,6 +92,7 @@ Saat konteks depot diubah:
 ## 5. Cara Menjalankan Proyek
 
 ### Prasyarat
+
 - Node.js v18+ atau v20+ (rekomendasi v20/v22)
 - pnpm (rekomendasi) atau npm
 
@@ -105,6 +108,7 @@ pnpm install
 # 3. Jalankan server pengembangan
 pnpm dev
 ```
+
 Aplikasi akan tersedia di: `http://localhost:3000`
 
 ### Build untuk Produksi
@@ -124,5 +128,4 @@ node .output/server/index.mjs
   - Hijau (`emerald`): Selesai, Diterima Penuh, Lunas, Aman, Aktif.
   - Kuning/Oranye (`amber`): Menipis, Sebagian Diterima, Belum Dibayar, Dalam Transit, Diproses.
   - Merah (`rose`): Kritis, Jatuh Tempo, Rusak/Cacat, Inaktif.
-- **Kepadatan Informasi**: Tata letak ringkas (*compact mode*) dengan angka tabular monospaced untuk nilai Rupiah dan kuantitas fisik.
-
+- **Kepadatan Informasi**: Tata letak ringkas (_compact mode_) dengan angka tabular monospaced untuk nilai Rupiah dan kuantitas fisik.

@@ -83,27 +83,19 @@ const printReport = () => {
 
 <template>
   <div class="space-y-4">
-    <PageHeader
-      title="Laporan Keuangan Manajerial (Financial Reports)"
-      subtitle="Ikhtisar Laba Rugi Operasional (P&L) usaha distribusi Aqua untuk manajemen dan pemilik."
-    >
+    <PageHeader title="Laporan Keuangan Manajerial (Financial Reports)"
+      subtitle="Ikhtisar Laba Rugi Operasional (P&L) usaha distribusi Aqua untuk manajemen dan pemilik.">
       <template #actions>
-        <button
-          type="button"
+        <button type="button"
           class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 rounded text-xs font-semibold shadow-xs transition-colors"
-          title="Cetak via dialog browser"
-          @click="printReport"
-        >
+          title="Cetak via dialog browser" @click="printReport">
           <Printer class="w-3.5 h-3.5" />
           <span>Cetak / Cetak PDF</span>
         </button>
 
-        <button
-          type="button"
-          :disabled="isExporting"
+        <button type="button" :disabled="isExporting"
           class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#0f3b6c] hover:bg-blue-800 disabled:bg-blue-400 text-white rounded text-xs font-semibold shadow-xs transition-colors"
-          @click="exportPDF"
-        >
+          @click="exportPDF">
           <Loader2 v-if="isExporting" class="w-3.5 h-3.5 animate-spin" />
           <FileDown v-else class="w-3.5 h-3.5" />
           <span>{{ isExporting ? 'Memproses PDF...' : 'Unduh Dokumen PDF' }}</span>
@@ -112,19 +104,16 @@ const printReport = () => {
     </PageHeader>
 
     <!-- Printable Financial Statement Sheet -->
-    <div
-      id="financial-report-sheet"
-      ref="reportSheetRef"
+    <div id="financial-report-sheet" ref="reportSheetRef"
       class="bg-white border border-slate-200 rounded shadow-xs p-6 md:p-8 max-w-4xl mx-auto space-y-6 print-card"
-      style="font-family: var(--sap-font, '72', '72full', -apple-system, 'Segoe UI', Arial, sans-serif);"
-    >
+      style="font-family: var(--sap-font, '72', '72full', -apple-system, 'Segoe UI', Arial, sans-serif);">
       <!-- Official Corporate Header -->
       <div class="flex items-start justify-between pb-4 border-b-2 border-slate-800">
         <div>
           <div class="flex items-center gap-2">
             <div>
               <h2 class="text-base font-bold text-slate-900 uppercase tracking-tight leading-none">
-                PT DWI SAPTA UTAMA
+                PT Dwi Sapta Utama
               </h2>
               <p class="text-[10px] text-slate-500 uppercase tracking-widest mt-0.5">
                 Distributor Resmi Danone Aqua Bali
@@ -138,7 +127,8 @@ const printReport = () => {
         </div>
 
         <div class="text-right">
-          <div class="inline-block px-2.5 py-1 bg-slate-100 border border-slate-300 rounded text-[11px] font-mono font-bold text-slate-700 uppercase">
+          <div
+            class="inline-block px-2.5 py-1 bg-slate-100 border border-slate-300 rounded text-[11px] font-mono font-bold text-slate-700 uppercase">
             Dokumen Rahasia Internal
           </div>
           <div class="text-[11px] font-mono text-slate-500 mt-1">No: LAP-KEU-2026-11</div>
@@ -231,10 +221,13 @@ const printReport = () => {
       </div>
 
       <!-- Laba Bersih Operasional -->
-      <div class="p-3.5 bg-emerald-50 border-2 border-emerald-400 rounded flex justify-between items-center text-xs font-bold">
+      <div
+        class="p-3.5 bg-emerald-50 border-2 border-emerald-400 rounded flex justify-between items-center text-xs font-bold">
         <div>
-          <div class="uppercase tracking-wider text-emerald-900 text-sm">Laba Bersih Operasional Berjalan (Net Operating Income)</div>
-          <div class="text-[11px] text-emerald-700 font-normal">Hasil usaha operasional sebelum beban pajak & penyusutan tahunan</div>
+          <div class="uppercase tracking-wider text-emerald-900 text-sm">Laba Bersih Operasional Berjalan (Net Operating
+            Income)</div>
+          <div class="text-[11px] text-emerald-700 font-normal">Hasil usaha operasional sebelum beban pajak & penyusutan
+            tahunan</div>
         </div>
         <span class="text-base font-mono text-emerald-800">{{ formatRupiah(netOperatingIncome) }}</span>
       </div>

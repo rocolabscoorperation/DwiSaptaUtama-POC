@@ -38,12 +38,13 @@ const selectDemoUser = (userEmail: string) => {
 <template>
   <div class="bg-white rounded border border-slate-200 shadow-2xl overflow-hidden flex flex-col md:flex-row">
     <!-- Left Hero / Brand Pane -->
-    <div class="bg-[#0b2447] text-white p-8 md:w-5/12 flex flex-col justify-between border-b md:border-b-0 md:border-r border-slate-800">
+    <div
+      class="bg-[#0b2447] text-white p-8 md:w-5/12 flex flex-col justify-between border-b md:border-b-0 md:border-r border-slate-800">
       <div>
         <div class="flex items-center gap-2.5 mb-6">
           <div>
             <div class="text-sm font-bold tracking-tight text-white leading-none">
-              PT DWI SAPTA UTAMA
+              PT Dwi Sapta Utama
             </div>
             <div class="text-xs text-blue-300 uppercase tracking-widest font-semibold mt-1">
               Distribusi Resmi Aqua Bali
@@ -55,7 +56,8 @@ const selectDemoUser = (userEmail: string) => {
           Enterprise Resource Planning (ERP) Prototype
         </h2>
         <p class="text-sm text-slate-300 leading-relaxed">
-          Sistem manajemen terpadu rantai pasok, pergudangan depot, penjualan galon, dan pelaporan keuangan terintegrasi.
+          Sistem manajemen terpadu rantai pasok, pergudangan depot, penjualan galon, dan pelaporan keuangan
+          terintegrasi.
         </p>
 
         <div class="mt-6 pt-6 border-t border-slate-800 space-y-2.5 text-sm text-slate-300">
@@ -94,35 +96,26 @@ const selectDemoUser = (userEmail: string) => {
         <form class="space-y-4" @submit.prevent="handleLogin">
           <div>
             <label class="block text-sm font-semibold text-slate-700 mb-1.5">Alamat Email</label>
-            <input
-              v-model="email"
-              type="email"
-              required
+            <input v-model="email" type="email" required
               class="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-300 rounded focus:bg-white focus:outline-hidden focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-colors"
-              placeholder="nama@demo.com"
-            />
+              placeholder="nama@demo.com" />
           </div>
 
           <div>
             <label class="block text-sm font-semibold text-slate-700 mb-1.5">Kata Sandi</label>
-            <input
-              v-model="password"
-              type="password"
-              required
+            <input v-model="password" type="password" required
               class="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-300 rounded focus:bg-white focus:outline-hidden focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-colors"
-              placeholder="demo123"
-            />
+              placeholder="demo123" />
           </div>
 
-          <div v-if="errorMsg" class="p-3 rounded bg-rose-50 border border-rose-200 text-rose-700 text-sm flex items-center gap-2">
+          <div v-if="errorMsg"
+            class="p-3 rounded bg-rose-50 border border-rose-200 text-rose-700 text-sm flex items-center gap-2">
             <AlertCircle class="w-4 h-4 shrink-0" />
             <span>{{ errorMsg }}</span>
           </div>
 
-          <button
-            type="submit"
-            class="w-full mt-2 py-2.5 px-4 bg-[#0f3b6c] hover:bg-blue-800 text-white font-semibold rounded text-sm transition-colors flex items-center justify-center gap-2 shadow-xs cursor-pointer"
-          >
+          <button type="submit"
+            class="w-full mt-2 py-2.5 px-4 bg-[#0f3b6c] hover:bg-blue-800 text-white font-semibold rounded text-sm transition-colors flex items-center justify-center gap-2 shadow-xs cursor-pointer">
             <LogIn class="w-4 h-4" />
             <span>Masuk ke Dashboard</span>
           </button>
@@ -136,13 +129,9 @@ const selectDemoUser = (userEmail: string) => {
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-48 overflow-y-auto pr-1">
-            <button
-              v-for="acc in authStore.demoAccounts"
-              :key="acc.id"
-              type="button"
+            <button v-for="acc in authStore.demoAccounts" :key="acc.id" type="button"
               class="text-left p-2.5 rounded border border-slate-200 hover:border-blue-500 hover:bg-blue-50/50 transition-colors cursor-pointer"
-              @click="selectDemoUser(acc.email)"
-            >
+              @click="selectDemoUser(acc.email)">
               <div class="font-semibold text-slate-800 text-sm">{{ acc.roleName }}</div>
               <div class="text-xs text-slate-500 font-mono truncate mt-0.5">{{ acc.email }}</div>
             </button>

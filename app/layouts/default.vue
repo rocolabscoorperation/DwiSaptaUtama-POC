@@ -20,14 +20,14 @@ const closeMobile = () => {
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col bg-[#f5f7fa] text-slate-800">
-    <!-- Top Header -->
+  <div class="min-h-screen flex flex-col bg-[#F5F6F8]">
+    <!-- Top Shell Header -->
     <AppHeader
       :sidebar-collapsed="sidebarCollapsed"
       @toggle-sidebar="toggleSidebar"
     />
 
-    <!-- Main Body Area -->
+    <!-- Body: Sidebar + Content -->
     <div class="flex-1 min-h-0 flex overflow-hidden">
       <!-- Sidebar Navigation -->
       <AppSidebar
@@ -36,13 +36,12 @@ const closeMobile = () => {
         @close-mobile="closeMobile"
       />
 
-      <!-- Content Area -->
-      <main class="flex-1 overflow-y-auto px-3 sm:px-5 py-4 min-w-0">
-        <div class="max-w-7xl mx-auto">
+      <!-- Main Content -->
+      <main class="flex-1 overflow-y-auto min-w-0">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 py-5">
           <slot />
         </div>
       </main>
     </div>
   </div>
 </template>
-

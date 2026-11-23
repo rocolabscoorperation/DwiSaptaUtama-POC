@@ -16,15 +16,14 @@ const handleSwitch = (role: any) => {
 
 <template>
   <div class="space-y-4">
-    <PageHeader
-      title="Manajemen Pengguna (User Management)"
-      subtitle="Daftar 7 akun demo pengguna sistem ERP PT Dwi Sapta Utama dengan hak akses departemen masing-masing."
-    />
+    <PageHeader title="Manajemen Pengguna (User Management)"
+      subtitle="Daftar 7 akun demo pengguna sistem ERP PT Dwi Sapta Utama dengan hak akses departemen masing-masing." />
 
     <div class="bg-white border border-slate-200 rounded shadow-xs overflow-hidden">
       <div class="overflow-x-auto">
         <table class="w-full text-xs text-left">
-          <thead class="bg-slate-100 text-slate-600 font-semibold border-b border-slate-200 uppercase text-[10px] tracking-wider">
+          <thead
+            class="bg-slate-100 text-slate-600 font-semibold border-b border-slate-200 uppercase text-[10px] tracking-wider">
             <tr>
               <th class="py-2.5 px-3">ID Pengguna</th>
               <th class="py-2.5 px-3">Nama Pegawai / Jabatan</th>
@@ -37,12 +36,8 @@ const handleSwitch = (role: any) => {
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-100">
-            <tr
-              v-for="u in authStore.demoAccounts"
-              :key="u.id"
-              class="hover:bg-slate-50 transition-colors"
-              :class="{ 'bg-blue-50/40': authStore.currentUser?.id === u.id }"
-            >
+            <tr v-for="u in authStore.demoAccounts" :key="u.id" class="hover:bg-slate-50 transition-colors"
+              :class="{ 'bg-blue-50/40': authStore.currentUser?.id === u.id }">
               <td class="py-2.5 px-3 font-mono font-semibold text-blue-900">
                 {{ u.id }}
               </td>
@@ -53,7 +48,8 @@ const handleSwitch = (role: any) => {
                 {{ u.email }}
               </td>
               <td class="py-2.5 px-3">
-                <span class="inline-flex items-center gap-1 font-semibold text-slate-700 bg-slate-100 px-2 py-0.5 rounded text-[11px]">
+                <span
+                  class="inline-flex items-center gap-1 font-semibold text-slate-700 bg-slate-100 px-2 py-0.5 rounded text-[11px]">
                   <Shield class="w-3 h-3 text-blue-600" />
                   {{ u.roleName }}
                 </span>
@@ -73,18 +69,13 @@ const handleSwitch = (role: any) => {
                 <StatusBadge :status="u.status" size="sm" />
               </td>
               <td class="py-2.5 px-3 text-center">
-                <span
-                  v-if="authStore.currentUser?.id === u.id"
-                  class="inline-flex items-center gap-1 font-bold text-xs text-blue-700 bg-blue-100/80 px-2.5 py-0.5 rounded"
-                >
+                <span v-if="authStore.currentUser?.id === u.id"
+                  class="inline-flex items-center gap-1 font-bold text-xs text-blue-700 bg-blue-100/80 px-2.5 py-0.5 rounded">
                   <Check class="w-3.5 h-3.5" /> Sedang Login
                 </span>
-                <button
-                  v-else
-                  type="button"
+                <button v-else type="button"
                   class="px-2 py-0.5 text-xs text-slate-600 border border-slate-300 hover:bg-slate-100 rounded transition-colors inline-flex items-center gap-1"
-                  @click="handleSwitch(u.role)"
-                >
+                  @click="handleSwitch(u.role)">
                   <RefreshCw class="w-3 h-3" /> Ganti Akun
                 </button>
               </td>

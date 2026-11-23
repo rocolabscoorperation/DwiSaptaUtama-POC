@@ -14,58 +14,64 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <header class="bg-[#0b2447] text-white border-b border-slate-700/60 sticky top-0 z-30 shadow-xs">
-    <div class="h-13 px-3 sm:px-4 flex items-center justify-between gap-3">
-      <!-- Left: Sidebar Toggle + Title -->
-      <div class="flex items-center gap-3">
+  <header class="bg-[#113261] text-white sticky top-0 z-30 border-b border-[#1E4A80]">
+    <!-- Shell Bar -->
+    <div class="h-12 px-3 sm:px-4 flex items-center justify-between gap-3">
+      <!-- Left: Toggle + Brand -->
+      <div class="flex items-center gap-3 shrink-0">
         <button
           type="button"
-          class="p-1.5 rounded hover:bg-slate-800 text-slate-300 hover:text-white transition-colors focus:outline-hidden"
-          title="Buka/Tutup Menu Navigasi"
+          class="p-1.5 rounded hover:bg-[#1B4A8A] text-[#A8C8E8] hover:text-white transition-colors cursor-pointer"
+          title="Buka/Tutup Navigasi"
           @click="emit('toggleSidebar')"
         >
           <Menu class="w-5 h-5" />
         </button>
 
-        <div class="flex items-center gap-2">
-          <div>
-            <div class="text-sm font-bold tracking-tight text-white leading-none">
-              DWI SAPTA UTAMA
+        <div class="flex items-center gap-2.5">
+          <!-- Brand mark -->
+          <div class="w-7 h-7 bg-[#0070F2] rounded flex items-center justify-center font-black text-white text-xs tracking-widest shrink-0">
+            AQ
+          </div>
+          <div class="hidden sm:block">
+            <div class="text-sm font-bold text-white leading-none tracking-tight">
+              Dwi Sapta Utama
             </div>
-            <div class="text-xs text-blue-200 tracking-wider uppercase font-medium leading-tight mt-0.5">
-              Aqua Distribution ERP
+            <div class="text-[10px] text-[#7FB3E0] leading-none mt-0.5 tracking-wide">
+              Aqua Distribution · ERP
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Center: Depot Context Indicator -->
+      <!-- Center: Depot Selector -->
       <div class="flex items-center">
         <DepotSelector />
       </div>
 
-      <!-- Right: Notifications & User Menu -->
-      <div class="flex items-center gap-2">
-        <!-- Notification Bell -->
+      <!-- Right: Notifications + User -->
+      <div class="flex items-center gap-1.5">
         <button
           type="button"
-          class="relative p-1.5 rounded hover:bg-slate-800 text-slate-300 hover:text-white transition-colors cursor-pointer"
-          title="Notifikasi Operasional"
+          class="relative p-1.5 rounded hover:bg-[#1B4A8A] text-[#A8C8E8] hover:text-white transition-colors cursor-pointer"
+          title="Notifikasi"
         >
           <Bell class="w-4 h-4" />
-          <span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+          <span class="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-amber-400" />
         </button>
 
-        <div class="h-5 w-px bg-slate-700" />
+        <div class="w-px h-5 bg-[#1E4A80]" />
 
-        <!-- User Menu -->
         <UserMenu />
       </div>
     </div>
 
-    <!-- Secondary bar for Breadcrumbs on desktop/tablet -->
-    <div class="hidden sm:flex bg-slate-100 border-t border-slate-200 px-4 py-1.5 items-center justify-between">
+    <!-- Breadcrumb Bar -->
+    <div class="hidden sm:flex bg-[#F5F6F8] border-t border-[#E0E5EB] px-4 py-1.5 items-center justify-between">
       <AppBreadcrumb />
+      <div class="text-[11px] text-[#556B82] font-mono">
+        Sistem: <span class="text-emerald-600 font-semibold">● Online</span>
+      </div>
     </div>
   </header>
 </template>
