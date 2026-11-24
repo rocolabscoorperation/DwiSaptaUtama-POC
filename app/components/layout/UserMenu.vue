@@ -88,7 +88,6 @@
 				<div class="mt-2 flex items-center gap-2">
 					<span
 						class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-semibold bg-[#EEF4FF] text-[#0070F2] border border-[#BADAFF]">
-						<Shield class="w-3 h-3" />
 						{{ authStore.currentUser?.roleName }}
 					</span>
 					<span class="text-xs text-slate-500">

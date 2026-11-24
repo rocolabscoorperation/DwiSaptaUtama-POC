@@ -7,9 +7,13 @@ import type {
   PurchaseOrder,
   StockAdjustment,
   StockTransfer,
+  StockItem,
+  StockMovement,
   SalesOrder,
   ChartOfAccount,
-  JournalEntry
+  JournalEntry,
+  GoodsReceipt,
+  GoodsReturn
 } from '~~/shared/types'
 import {
   mockProducts,
@@ -42,7 +46,8 @@ export const useErpStore = defineStore('erp', () => {
 
   // Purchasing
   const purchaseOrders = ref<PurchaseOrder[]>([...mockPurchaseOrders])
-  const goodsReceipts = ref([...mockGoodsReceipts])
+  const goodsReceipts = ref<GoodsReceipt[]>([...mockGoodsReceipts])
+  const goodsReturns = ref<GoodsReturn[]>([])
 
   // Inventory
   const stockItems = ref([...mockStockItems])
@@ -87,6 +92,11 @@ export const useErpStore = defineStore('erp', () => {
       return goodsReceipts.value
     }
     return goodsReceipts.value.filter((gr) => gr.depotId === activeDepotId.value)
+  })
+
+  const filteredGoodsReturns = computed(() => {
+    if (activeDepotId.value === 'ALL') return goodsReturns.value
+    return goodsReturns.value.filter((item: GoodsReturn) => item.depotId === activeDepotId.value)
   })
 
   // Filtered Sales Orders
@@ -359,6 +369,66 @@ export const useErpStore = defineStore('erp', () => {
   }
 
   // ==========================================
+  // CRUD OPERATIONS: GOODS RECEIPTS / RETURNS
+  // ==========================================
+  const addGoodsReceipt = (data: Omit<GoodsReceipt, 'id' | 'grNumber'>) => {
+    const num = String(goodsReceipts.value.length + 1).padStart(3, '0')
+    const receipt: GoodsReceipt = { ...data, id: `GR-${num}`, grNumber: `GR-2026-${num}` }
+    goodsReceipts.value.unshift(receipt)
+
+    const po = purchaseOrders.value.find((item: PurchaseOrder) => item.poNumber === data.poNumber)
+    if (po) {
+      po.items = po.items.map((poItem: PurchaseOrder['items'][number]) => {
+        const received = data.items.find((item: GoodsReceipt['items'][number]) => item.productId === poItem.productId)?.qtyReceived || 0
+        return { ...poItem, qtyReceived: Math.min(poItem.qtyOrdered, poItem.qtyReceived + received) }
+      })
+      const receivedTotal = po.items.reduce((sum: number, item: PurchaseOrder['items'][number]) => sum + item.qtyReceived, 0)
+      const orderedTotal = po.items.reduce((sum: number, item: PurchaseOrder['items'][number]) => sum + item.qtyOrdered, 0)
+      po.status = receivedTotal >= orderedTotal ? 'Selesai' : 'Sebagian Diterima'
+    }
+
+    data.items.forEach((item: GoodsReceipt['items'][number]) => {
+      const stock = stockItems.value.find((stockItem: StockItem) => stockItem.depotId === data.depotId && stockItem.productId === item.productId)
+      if (!stock) return
+      stock.quantity += item.qtyReceived
+      stock.stockValue = stock.quantity * stock.purchasePrice
+      stock.status = stock.quantity <= 0 ? 'Kritis' : stock.quantity <= stock.minStock ? 'Menipis' : 'Aman'
+      const movementNum = String(stockMovements.value.length + 1).padStart(3, '0')
+      stockMovements.value.unshift({
+        id: `MOV-${movementNum}`, movementNumber: `MOV-2026-${movementNum}`,
+        date: `${data.receiptDate} 09:00`, type: 'Penerimaan PO (GR)', referenceNumber: receipt.grNumber,
+        productId: item.productId, productName: item.productName, sku: item.sku, unit: item.unit,
+        depotId: data.depotId, depotName: data.depotName, qtyChange: item.qtyReceived,
+        balanceAfter: stock.quantity, notes: `Penerimaan barang dari PO ${data.poNumber}`, operator: data.receivedBy
+      })
+    })
+    return receipt
+  }
+
+  const addGoodsReturn = (data: Omit<GoodsReturn, 'id' | 'returnNumber'>) => {
+    const num = String(goodsReturns.value.length + 1).padStart(3, '0')
+    const item: GoodsReturn = { ...data, id: `RET-${num}`, returnNumber: `RET-2026-${num}` }
+    goodsReturns.value.unshift(item)
+    data.items.forEach((returnItem: GoodsReturn['items'][number]) => {
+      const stock = stockItems.value.find((stockItem: StockItem) => stockItem.depotId === data.depotId && stockItem.productId === returnItem.productId)
+      if (!stock) return
+      const qtyReturned = Math.min(returnItem.qtyReturned, stock.quantity)
+      stock.quantity = Math.max(0, stock.quantity - qtyReturned)
+      stock.stockValue = stock.quantity * stock.purchasePrice
+      stock.status = stock.quantity <= 0 ? 'Kritis' : stock.quantity <= stock.minStock ? 'Menipis' : 'Aman'
+      const movementNum = String(stockMovements.value.length + 1).padStart(3, '0')
+      stockMovements.value.unshift({
+        id: `MOV-${movementNum}`, movementNumber: `MOV-2026-${movementNum}`,
+        date: `${data.returnDate} 09:00`, type: 'Retur Pembelian', referenceNumber: item.returnNumber,
+        productId: returnItem.productId, productName: returnItem.productName, sku: returnItem.sku, unit: returnItem.unit,
+        depotId: data.depotId, depotName: data.depotName, qtyChange: -qtyReturned,
+        balanceAfter: stock.quantity, notes: data.reason, operator: data.returnedBy
+      })
+    })
+    return item
+  }
+
+  // ==========================================
   // CRUD OPERATIONS: STOCK ADJUSTMENTS
   // ==========================================
   const addStockAdjustment = (adjData: Omit<StockAdjustment, 'id' | 'adjustmentNumber'>) => {
@@ -498,6 +568,7 @@ export const useErpStore = defineStore('erp', () => {
     customers,
     purchaseOrders,
     goodsReceipts,
+    goodsReturns,
     stockItems,
     stockMovements,
     stockAdjustments,
@@ -513,6 +584,7 @@ export const useErpStore = defineStore('erp', () => {
     filteredStock,
     filteredPurchaseOrders,
     filteredGoodsReceipts,
+    filteredGoodsReturns,
     filteredSalesOrders,
     filteredDeliveryOrders,
     filteredSalesInvoices,
@@ -537,6 +609,8 @@ export const useErpStore = defineStore('erp', () => {
     addPurchaseOrder,
     updatePurchaseOrder,
     deletePurchaseOrder,
+    addGoodsReceipt,
+    addGoodsReturn,
     addStockAdjustment,
     deleteStockAdjustment,
     addStockTransfer,

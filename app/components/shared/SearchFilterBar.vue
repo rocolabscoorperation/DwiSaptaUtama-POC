@@ -23,7 +23,7 @@
 				type="text"
 				:value="modelValue"
 				:placeholder="placeholder || 'Cari nomor dokumen, produk, atau nama...'"
-				class="w-full pl-8 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-300 rounded focus:bg-white focus:outline-hidden focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-colors"
+				class="fiori-input pl-8 pr-3"
 				@input="
 					emit('update:modelValue', ($event.target as HTMLInputElement).value)
 				" />

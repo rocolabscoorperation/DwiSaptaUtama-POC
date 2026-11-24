@@ -547,12 +547,34 @@ main [class*="bg-[#0f3b6c]"] * {
 	color: #fff !important;
 }
 
-/* Shared confirmation dialog header. */
-.fiori-dialog > :first-child {
+/* Shared modal/object-page header. */
+.fiori-dialog-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem;
+	min-height: 3rem;
+	padding: 0.75rem 1rem;
+	background: var(--color-shell-bg);
+	border-bottom: 1px solid var(--color-shell-border-strong);
 	color: #fff;
 }
-.fiori-dialog > :first-child * {
+.fiori-dialog-header h1,
+.fiori-dialog-header h2,
+.fiori-dialog-header h3,
+.fiori-dialog-header button,
+.fiori-dialog-header svg {
 	color: #fff;
+}
+.fiori-dialog-header button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.25rem;
+	border-radius: var(--radius-sm);
+}
+.fiori-dialog-header button:hover {
+	background: rgba(255, 255, 255, 0.12);
 }
 
 /* ─────────────────────────────────────────────

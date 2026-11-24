@@ -30,18 +30,10 @@
 
 				<div class="flex items-center gap-2.5">
 					<!-- Brand mark -->
-					<div
-						class="w-7 h-7 bg-[var(--color-accent)] rounded flex items-center justify-center font-bold text-white text-xs shrink-0">
-						AQ
-					</div>
 					<div class="hidden sm:block">
 						<div
 							class="text-sm font-bold text-white leading-none tracking-tight">
-							Dwi Sapta Utama
-						</div>
-						<div
-							class="text-[10px] text-[var(--color-shell-text)] leading-none mt-0.5">
-							Aqua Distribution · ERP
+							PT Dwi Sapta Utama
 						</div>
 					</div>
 				</div>
@@ -62,10 +54,6 @@
 		<div
 			class="hidden sm:flex bg-[var(--color-surface)] border-t border-[var(--color-border)] px-4 py-1.5 items-center justify-between">
 			<AppBreadcrumb />
-			<div class="text-[11px] text-[var(--color-text-secondary)]">
-				Sistem:
-				<span class="text-[var(--color-success)] font-semibold">Online</span>
-			</div>
 		</div>
 	</header>
 </template>
