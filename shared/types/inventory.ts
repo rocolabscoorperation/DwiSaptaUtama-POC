@@ -5,6 +5,7 @@ export type StockMovementType =
   | 'Penyesuaian Keluar (Rusak)'
   | 'Transfer Keluar'
   | 'Transfer Masuk'
+  | 'Retur Pembelian'
 
 export type StockStatus = 'Aman' | 'Menipis' | 'Kritis'
 

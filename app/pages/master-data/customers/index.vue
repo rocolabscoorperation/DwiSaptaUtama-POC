@@ -122,7 +122,7 @@ const confirmDelete = () => {
       <template #actions>
         <button
           type="button"
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#0f3b6c] hover:bg-blue-800 text-white rounded text-xs font-semibold shadow-xs transition-colors"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#0A6ED1] hover:bg-[#0854A0] text-white rounded text-xs font-semibold shadow-xs transition-colors"
           @click="openAddModal"
         >
           <Plus class="w-3.5 h-3.5" />
@@ -137,11 +137,11 @@ const confirmDelete = () => {
     >
       <template #filters>
         <div class="flex items-center gap-1.5 text-xs">
-          <Filter class="w-3.5 h-3.5 text-slate-400" />
-          <span class="text-slate-500 font-medium">Tipe Mitra:</span>
+          <Filter class="w-3.5 h-3.5 text-[#647B91]" />
+          <span class="text-[#425B73] font-medium">Tipe Mitra:</span>
           <select
             v-model="selectedType"
-            class="px-2 py-1 text-xs bg-slate-50 border border-slate-300 rounded focus:bg-white focus:outline-hidden"
+            class="px-2 py-1 text-xs bg-slate-50 border border-[#D9E2EC] rounded focus:bg-white focus:outline-hidden"
           >
             <option v-for="t in customerTypes" :key="t" :value="t">
               {{ t === 'ALL' ? 'Semua Tipe' : t }}
@@ -151,10 +151,10 @@ const confirmDelete = () => {
       </template>
     </SearchFilterBar>
 
-    <div class="bg-white border border-slate-200 rounded shadow-xs overflow-hidden">
+    <div class="bg-white border border-[#EAF0F5] rounded shadow-xs overflow-hidden">
       <div class="overflow-x-auto">
         <table class="w-full text-xs text-left">
-          <thead class="bg-slate-100 text-slate-600 font-semibold border-b border-slate-200 uppercase text-[10px] tracking-wider">
+          <thead class="bg-slate-100 text-slate-600 font-semibold border-b border-[#EAF0F5] uppercase text-[10px] tracking-wider">
             <tr>
               <th class="py-2.5 px-3">Kode</th>
               <th class="py-2.5 px-3">Nama Pelanggan</th>
@@ -188,10 +188,10 @@ const confirmDelete = () => {
               <td class="py-2.5 px-3 text-slate-600 max-w-xs truncate">
                 {{ cust.address }}
               </td>
-              <td class="py-2.5 px-3 font-medium text-slate-700">
+              <td class="py-2.5 px-3 font-medium text-[#1D2024]">
                 {{ cust.paymentTerms }}
               </td>
-              <td class="py-2.5 px-3 text-right font-mono font-semibold text-slate-900">
+              <td class="py-2.5 px-3 text-right font-mono font-semibold text-[#1D2024]">
                 {{ cust.creditLimit > 0 ? formatRupiah(cust.creditLimit) : '-' }}
               </td>
               <td class="py-2.5 px-3 text-center">
@@ -209,7 +209,7 @@ const confirmDelete = () => {
                   </button>
                   <button
                     type="button"
-                    class="p-1 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded transition-colors"
+                    class="p-1 text-[#647B91] hover:text-[#AA0808] hover:bg-[#FFF0EF] rounded transition-colors"
                     title="Hapus Pelanggan"
                     @click="promptDelete(cust)"
                   >
@@ -233,7 +233,7 @@ const confirmDelete = () => {
       v-if="isModalOpen"
       class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4 animate-in fade-in"
     >
-      <div class="bg-white rounded border border-slate-200 shadow-2xl max-w-lg w-full overflow-hidden">
+      <div class="bg-white rounded border border-[#EAF0F5] shadow-lg max-w-lg w-full overflow-hidden">
         <div class="px-4 py-3 bg-[#0b2447] text-white flex items-center justify-between">
           <div class="flex items-center gap-2">
             <Users class="w-4 h-4 text-blue-400" />
@@ -249,19 +249,19 @@ const confirmDelete = () => {
         <form class="p-4 space-y-3 text-xs" @submit.prevent="saveCustomer">
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Kode Pelanggan</label>
+              <label class="block font-semibold text-[#1D2024] mb-1">Kode Pelanggan</label>
               <input
                 v-model="formData.customerCode"
                 type="text"
                 required
-                class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-300 rounded font-mono focus:bg-white focus:outline-hidden"
+                class="w-full px-2.5 py-1.5 bg-slate-50 border border-[#D9E2EC] rounded font-mono focus:bg-white focus:outline-hidden"
               />
             </div>
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Tipe Pelanggan</label>
+              <label class="block font-semibold text-[#1D2024] mb-1">Tipe Pelanggan</label>
               <select
                 v-model="formData.type"
-                class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-300 rounded focus:bg-white focus:outline-hidden"
+                class="w-full px-2.5 py-1.5 bg-slate-50 border border-[#D9E2EC] rounded focus:bg-white focus:outline-hidden"
               >
                 <option value="Corporate">Corporate (Hotel/Instansi)</option>
                 <option value="Reseller">Reseller (Toko Grosir)</option>
@@ -271,55 +271,55 @@ const confirmDelete = () => {
           </div>
 
           <div>
-            <label class="block font-semibold text-slate-700 mb-1">Nama Perusahaan / Toko / Pelanggan</label>
+            <label class="block font-semibold text-[#1D2024] mb-1">Nama Perusahaan / Toko / Pelanggan</label>
             <input
               v-model="formData.name"
               type="text"
               required
-              class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-300 rounded focus:bg-white focus:outline-hidden"
+              class="w-full px-2.5 py-1.5 bg-slate-50 border border-[#D9E2EC] rounded focus:bg-white focus:outline-hidden"
               placeholder="Contoh: PT Bali Sunset Resort & Spa Hotel"
             />
           </div>
 
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Nomor Telepon</label>
+              <label class="block font-semibold text-[#1D2024] mb-1">Nomor Telepon</label>
               <input
                 v-model="formData.phone"
                 type="text"
                 required
-                class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-300 rounded font-mono focus:bg-white focus:outline-hidden"
+                class="w-full px-2.5 py-1.5 bg-slate-50 border border-[#D9E2EC] rounded font-mono focus:bg-white focus:outline-hidden"
                 placeholder="(0361) 754890 / 0812-..."
               />
             </div>
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Email (Opsional)</label>
+              <label class="block font-semibold text-[#1D2024] mb-1">Email (Opsional)</label>
               <input
                 v-model="formData.email"
                 type="email"
-                class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-300 rounded focus:bg-white focus:outline-hidden"
+                class="w-full px-2.5 py-1.5 bg-slate-50 border border-[#D9E2EC] rounded focus:bg-white focus:outline-hidden"
                 placeholder="purchasing@mitra.com"
               />
             </div>
           </div>
 
           <div>
-            <label class="block font-semibold text-slate-700 mb-1">Alamat Pengiriman / Lokasi</label>
+            <label class="block font-semibold text-[#1D2024] mb-1">Alamat Pengiriman / Lokasi</label>
             <textarea
               v-model="formData.address"
               rows="2"
               required
-              class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-300 rounded focus:bg-white focus:outline-hidden"
+              class="w-full px-2.5 py-1.5 bg-slate-50 border border-[#D9E2EC] rounded focus:bg-white focus:outline-hidden"
               placeholder="Jalan, nomor, kelurahan, kecamatan..."
             />
           </div>
 
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Termin Pembayaran</label>
+              <label class="block font-semibold text-[#1D2024] mb-1">Termin Pembayaran</label>
               <select
                 v-model="formData.paymentTerms"
-                class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-300 rounded focus:bg-white focus:outline-hidden"
+                class="w-full px-2.5 py-1.5 bg-slate-50 border border-[#D9E2EC] rounded focus:bg-white focus:outline-hidden"
               >
                 <option value="Cash (Tunai)">Cash (Tunai)</option>
                 <option value="Cash on Delivery (COD)">Cash on Delivery (COD)</option>
@@ -329,27 +329,27 @@ const confirmDelete = () => {
               </select>
             </div>
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Plafon Kredit (Rp)</label>
+              <label class="block font-semibold text-[#1D2024] mb-1">Plafon Kredit (Rp)</label>
               <input
                 v-model.number="formData.creditLimit"
                 type="number"
                 min="0"
-                class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-300 rounded font-mono focus:bg-white focus:outline-hidden"
+                class="w-full px-2.5 py-1.5 bg-slate-50 border border-[#D9E2EC] rounded font-mono focus:bg-white focus:outline-hidden"
               />
             </div>
           </div>
 
-          <div class="pt-3 border-t border-slate-200 flex justify-end gap-2">
+          <div class="pt-3 border-t border-[#EAF0F5] flex justify-end gap-2">
             <button
               type="button"
-              class="px-3 py-1.5 border border-slate-300 rounded text-slate-700 hover:bg-slate-50"
+              class="px-3 py-1.5 border border-[#D9E2EC] rounded text-[#1D2024] hover:bg-slate-50"
               @click="closeModal"
             >
               Batal
             </button>
             <button
               type="submit"
-              class="px-3 py-1.5 bg-[#0f3b6c] hover:bg-blue-800 text-white font-semibold rounded shadow-xs flex items-center gap-1"
+              class="px-3 py-1.5 bg-[#0A6ED1] hover:bg-[#0854A0] text-white font-semibold rounded shadow-xs flex items-center gap-1"
             >
               <Check class="w-3.5 h-3.5" />
               <span>{{ isEditing ? 'Simpan Perubahan' : 'Tambah Pelanggan' }}</span>

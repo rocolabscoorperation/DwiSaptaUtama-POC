@@ -9,7 +9,7 @@ definePageMeta({
 </script>
 
 <template>
-  <div class="p-8 text-center text-slate-500">
+  <div class="p-8 text-center text-[#425B73]">
     Mengarahkan ke Dashboard...
   </div>
 </template>

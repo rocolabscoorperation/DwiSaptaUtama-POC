@@ -1,5 +1,6 @@
 export type POStatus = 'Draft' | 'Diajukan' | 'Disetujui' | 'Sebagian Diterima' | 'Selesai' | 'Dibatalkan'
 export type GRStatus = 'Draft' | 'Diterima Sebagian' | 'Diterima Penuh'
+export type ReturnStatus = 'Diajukan' | 'Disetujui' | 'Selesai'
 
 export interface POItem {
   productId: string
@@ -49,5 +50,27 @@ export interface GoodsReceipt {
   items: GRItem[]
   status: GRStatus
   notes?: string
+}
+
+export interface GoodsReturn {
+  id: string
+  returnNumber: string
+  grNumber: string
+  poNumber: string
+  supplierId: string
+  supplierName: string
+  depotId: string
+  depotName: string
+  returnDate: string
+  returnedBy: string
+  reason: string
+  status: ReturnStatus
+  items: {
+    productId: string
+    productName: string
+    sku: string
+    unit: string
+    qtyReturned: number
+  }[]
 }
 

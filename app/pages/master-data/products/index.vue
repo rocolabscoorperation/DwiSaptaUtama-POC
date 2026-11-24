@@ -149,10 +149,10 @@ const confirmDelete = () => {
     </SearchFilterBar>
 
     <!-- Product Table -->
-    <div class="bg-white border border-slate-200 rounded shadow-xs overflow-hidden">
+    <div class="bg-white border border-[#EAF0F5] rounded shadow-xs overflow-hidden">
       <div class="overflow-x-auto">
         <table class="w-full text-xs text-left">
-          <thead class="bg-slate-100 text-slate-600 font-semibold border-b border-slate-200 uppercase text-[10px] tracking-wider">
+          <thead class="bg-slate-100 text-slate-600 font-semibold border-b border-[#EAF0F5] uppercase text-[10px] tracking-wider">
             <tr>
               <th class="py-2.5 px-3">SKU</th>
               <th class="py-2.5 px-3">Nama Produk</th>
@@ -179,17 +179,17 @@ const confirmDelete = () => {
                 <div class="text-[11px] text-slate-500 max-w-sm">{{ prod.description }}</div>
               </td>
               <td class="py-2.5 px-3">
-                <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-100 text-slate-700">
+                <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-100 text-[#1D2024]">
                   {{ prod.category }}
                 </span>
               </td>
               <td class="py-2.5 px-3 text-slate-600 font-medium">
                 {{ prod.unit }}
               </td>
-              <td class="py-2.5 px-3 text-right font-mono text-slate-700">
+              <td class="py-2.5 px-3 text-right font-mono text-[#1D2024]">
                 {{ formatRupiah(prod.purchasePrice) }}
               </td>
-              <td class="py-2.5 px-3 text-right font-mono font-bold text-slate-900">
+              <td class="py-2.5 px-3 text-right font-mono font-bold text-[#1D2024]">
                 {{ formatRupiah(prod.sellingPrice) }}
               </td>
               <td class="py-2.5 px-3 text-right font-mono text-slate-600">
@@ -210,7 +210,7 @@ const confirmDelete = () => {
                   </button>
                   <button
                     type="button"
-                    class="p-1 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded transition-colors"
+                    class="p-1 text-slate-400 hover:text-[#AA0808] hover:bg-[#FFF0EF] rounded transition-colors"
                     title="Hapus Produk"
                     @click="promptDelete(prod)"
                   >
@@ -235,7 +235,7 @@ const confirmDelete = () => {
       v-if="isModalOpen"
       class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4 animate-in fade-in"
     >
-      <div class="bg-white rounded border border-slate-200 shadow-2xl max-w-lg w-full overflow-hidden">
+      <div class="bg-white rounded border border-[#EAF0F5] shadow-lg max-w-lg w-full overflow-hidden">
         <div class="px-4 py-3 bg-[#0b2447] text-white flex items-center justify-between">
           <div class="flex items-center gap-2">
             <Package class="w-4 h-4 text-blue-400" />
@@ -251,17 +251,17 @@ const confirmDelete = () => {
         <form class="p-4 space-y-3 text-xs" @submit.prevent="saveProduct">
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Kode SKU</label>
+              <label class="block font-semibold text-[#1D2024] mb-1">Kode SKU</label>
               <input
                 v-model="formData.sku"
                 type="text"
                 required
-                class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-300 rounded font-mono focus:bg-white focus:outline-hidden focus:ring-1 focus:ring-blue-600"
+                class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-300 rounded font-mono focus:bg-white focus:outline-hidden focus:ring-1 focus:ring-[#0A6ED1]"
                 placeholder="AQ-GALON-19L"
               />
             </div>
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Kategori</label>
+              <label class="block font-semibold text-[#1D2024] mb-1">Kategori</label>
               <select
                 v-model="formData.category"
                 class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-300 rounded focus:bg-white focus:outline-hidden"
@@ -274,19 +274,19 @@ const confirmDelete = () => {
           </div>
 
           <div>
-            <label class="block font-semibold text-slate-700 mb-1">Nama Produk Lengkap</label>
+            <label class="block font-semibold text-[#1D2024] mb-1">Nama Produk Lengkap</label>
             <input
               v-model="formData.name"
               type="text"
               required
-              class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-300 rounded focus:bg-white focus:outline-hidden focus:ring-1 focus:ring-blue-600"
+              class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-300 rounded focus:bg-white focus:outline-hidden focus:ring-1 focus:ring-[#0A6ED1]"
               placeholder="Contoh: Aqua Galon 19 Liter"
             />
           </div>
 
           <div class="grid grid-cols-3 gap-3">
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Satuan</label>
+              <label class="block font-semibold text-[#1D2024] mb-1">Satuan</label>
               <input
                 v-model="formData.unit"
                 type="text"
@@ -296,7 +296,7 @@ const confirmDelete = () => {
               />
             </div>
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Harga Beli (Rp)</label>
+              <label class="block font-semibold text-[#1D2024] mb-1">Harga Beli (Rp)</label>
               <input
                 v-model.number="formData.purchasePrice"
                 type="number"
@@ -306,7 +306,7 @@ const confirmDelete = () => {
               />
             </div>
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Harga Jual (Rp)</label>
+              <label class="block font-semibold text-[#1D2024] mb-1">Harga Jual (Rp)</label>
               <input
                 v-model.number="formData.sellingPrice"
                 type="number"
@@ -319,7 +319,7 @@ const confirmDelete = () => {
 
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Batas Minimum Stok</label>
+              <label class="block font-semibold text-[#1D2024] mb-1">Batas Minimum Stok</label>
               <input
                 v-model.number="formData.minStock"
                 type="number"
@@ -329,7 +329,7 @@ const confirmDelete = () => {
               />
             </div>
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Status Produk</label>
+              <label class="block font-semibold text-[#1D2024] mb-1">Status Produk</label>
               <select
                 v-model="formData.status"
                 class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-300 rounded focus:bg-white focus:outline-hidden"
@@ -341,7 +341,7 @@ const confirmDelete = () => {
           </div>
 
           <div>
-            <label class="block font-semibold text-slate-700 mb-1">Keterangan / Spesifikasi</label>
+            <label class="block font-semibold text-[#1D2024] mb-1">Keterangan / Spesifikasi</label>
             <textarea
               v-model="formData.description"
               rows="2"
@@ -350,10 +350,10 @@ const confirmDelete = () => {
             />
           </div>
 
-          <div class="pt-3 border-t border-slate-200 flex justify-end gap-2">
+          <div class="pt-3 border-t border-[#EAF0F5] flex justify-end gap-2">
             <button
               type="button"
-              class="px-3 py-1.5 border border-slate-300 rounded text-slate-700 hover:bg-slate-50"
+              class="px-3 py-1.5 border border-slate-300 rounded text-[#1D2024] hover:bg-slate-50"
               @click="closeModal"
             >
               Batal
